@@ -3,19 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rodrigo França Chaves — Urban Economics & Causal Inference</title>
-<meta name="description" content="Rodrigo França Chaves — Causal inference, spatial econometrics, and machine learning applied to urban and housing policy.">
+<title>Rodrigo França Chaves — Data & Policy Analytics</title>
+<meta name="description" content="Rodrigo França Chaves — Quantitative analyst applying causal inference and machine learning to housing markets, urban policy, and public programs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,72,400;0,72,500;0,72,600;1,72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1A2238;
-    --paper:#FAF7F2;
-    --brick:#B5654A;
-    --slate:#3D4451;
-    --hairline:#D8D3C8;
-    --paper-dim:#F1ECE3;
+    --maroon:#800000;
+    --maroon-dark:#5c0000;
+    --maroon-tint:#FBEFEF;
+    --ink:#1A1A1A;
+    --gray-700:#4A4A4A;
+    --gray-500:#737373;
+    --gray-200:#E5E3DF;
+    --gray-100:#F4F2EF;
+    --paper:#FFFFFF;
     --max-w: 760px;
   }
   *{box-sizing:border-box;}
@@ -24,262 +27,110 @@
     margin:0;
     background:var(--paper);
     color:var(--ink);
-    font-family:'Inter',sans-serif;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:16px;
-    line-height:1.6;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
-  /* faint map-grid texture */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    background-image:
-      linear-gradient(var(--hairline) 1px, transparent 1px),
-      linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
-    background-size: 48px 48px;
-    opacity:0.35;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
-  }
-  a{color:var(--brick); text-decoration:none; border-bottom:1px solid currentColor;}
-  a:hover{opacity:0.75;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--brick); outline-offset:3px;}
+  a{color:var(--maroon); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
 
   .wrap{max-width:var(--max-w); margin:0 auto; padding:0 24px;}
 
-  /* ---------- NAV ---------- */
   nav{
     position:sticky; top:0; z-index:10;
-    background:rgba(250,247,242,0.88);
+    background:rgba(255,255,255,0.92);
     backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--hairline);
+    border-bottom:1px solid var(--gray-200);
   }
   nav .wrap{
     display:flex; justify-content:space-between; align-items:center;
-    padding:14px 24px;
+    padding:16px 24px;
   }
-  .nav-name{
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px; font-weight:500;
-    letter-spacing:0.02em;
-    color:var(--ink);
-    border-bottom:none;
-  }
-  .nav-links{display:flex; gap:22px; list-style:none; margin:0; padding:0;}
-  .nav-links a{
-    font-size:13px; font-weight:500; color:var(--slate);
-    border-bottom:none;
-  }
-  .nav-links a:hover{color:var(--brick);}
+  .nav-name{font-size:14px; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
+  .nav-links{display:flex; gap:24px; list-style:none; margin:0; padding:0;}
+  .nav-links a{font-size:14px; font-weight:500; color:var(--gray-700); text-decoration:none;}
+  .nav-links a:hover{color:var(--maroon);}
 
-  /* ---------- HERO ---------- */
-  header.hero{
-    padding:96px 0 64px;
-    border-bottom:1px solid var(--hairline);
-  }
-  .coord{
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px;
-    color:var(--brick);
-    letter-spacing:0.04em;
-    margin:0 0 18px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .coord::before{
-    content:"";
-    width:7px; height:7px;
-    border-radius:50%;
-    background:var(--brick);
-    display:inline-block;
+  header.hero{padding:88px 0 56px;}
+  .eyebrow{
+    font-size:13px; font-weight:700; color:var(--maroon);
+    text-transform:uppercase; letter-spacing:0.06em; margin:0 0 16px;
   }
   h1{
-    font-family:'Newsreader', serif;
-    font-weight:500;
-    font-size:clamp(2.4rem, 6vw, 3.4rem);
-    line-height:1.08;
-    margin:0 0 18px;
-    letter-spacing:-0.01em;
+    font-weight:800; font-size:clamp(2.2rem, 5.5vw, 3rem);
+    line-height:1.12; margin:0 0 20px; letter-spacing:-0.025em; color:var(--ink);
   }
-  .hero-sub{
-    font-size:18px;
-    color:var(--slate);
-    max-width:540px;
-    margin:0 0 28px;
-  }
-  .hero-tags{
-    display:flex; flex-wrap:wrap; gap:8px;
-    margin-bottom:32px;
-  }
-  .tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    padding:5px 10px;
-    border:1px solid var(--hairline);
-    border-radius:3px;
-    color:var(--slate);
-    background:var(--paper-dim);
-  }
-  .hero-links{display:flex; gap:20px; flex-wrap:wrap; font-size:14px; font-weight:500;}
+  .hero-sub{font-size:18px; color:var(--gray-700); max-width:540px; margin:0 0 32px;}
+  .btn-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:48px;}
+  .btn{padding:11px 20px; border-radius:6px; font-size:14px; font-weight:600; text-decoration:none; display:inline-block;}
+  .btn-primary{background:var(--maroon); color:#fff;}
+  .btn-primary:hover{background:var(--maroon-dark); text-decoration:none;}
+  .btn-secondary{border:1px solid var(--gray-200); color:var(--ink);}
+  .btn-secondary:hover{border-color:var(--maroon); color:var(--maroon); text-decoration:none; background:var(--maroon-tint);}
 
-  /* ---------- SECTION shared ---------- */
-  section{padding:56px 0; border-bottom:1px solid var(--hairline);}
+  .stats{display:flex; gap:40px; flex-wrap:wrap; padding:28px 0; border-top:1px solid var(--gray-200); border-bottom:1px solid var(--gray-200);}
+  .stat-num{font-size:1.7rem; font-weight:800; color:var(--maroon); letter-spacing:-0.02em;}
+  .stat-label{font-size:13px; color:var(--gray-500);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--gray-200);}
   section:last-of-type{border-bottom:none;}
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    color:var(--brick);
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    margin:0 0 10px;
-  }
-  h2{
-    font-family:'Newsreader', serif;
-    font-weight:500;
-    font-size:1.7rem;
-    margin:0 0 28px;
-    letter-spacing:-0.01em;
-  }
-  p{margin:0 0 16px; color:var(--slate);}
+  h2{font-weight:800; font-size:1.5rem; margin:0 0 28px; letter-spacing:-0.02em; color:var(--ink);}
+  p{margin:0 0 16px; color:var(--gray-700);}
 
-  /* ---------- ABOUT ---------- */
-  .about-grid{
-    display:grid; grid-template-columns: 1fr; gap:16px;
-  }
+  .about-grid{display:grid; grid-template-columns: 1fr; gap:16px;}
 
-  /* ---------- EXPERIENCE timeline ---------- */
-  .tl-item{
-    display:grid;
-    grid-template-columns: 110px 1fr;
-    gap:18px;
-    padding:18px 0;
-    border-top:1px solid var(--hairline);
-  }
+  .tl-item{display:grid; grid-template-columns: 110px 1fr; gap:18px; padding:20px 0; border-top:1px solid var(--gray-200);}
   .tl-item:first-of-type{border-top:none; padding-top:0;}
-  .tl-date{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    color:var(--slate);
-    padding-top:2px;
-  }
-  .tl-role{font-weight:600; font-size:15.5px; color:var(--ink); margin:0 0 2px;}
-  .tl-org{font-size:14px; color:var(--brick); margin:0 0 8px; font-weight:500;}
-  .tl-desc{font-size:14.5px; color:var(--slate); margin:0;}
+  .tl-date{font-size:13px; color:var(--gray-500); padding-top:2px; font-weight:500;}
+  .tl-role{font-weight:700; font-size:15.5px; color:var(--ink); margin:0 0 2px;}
+  .tl-org{font-size:14px; color:var(--maroon); margin:0 0 8px; font-weight:600;}
+  .tl-desc{font-size:14.5px; color:var(--gray-700); margin:0;}
 
-  /* ---------- PROJECTS ---------- */
-  .proj-card{
-    border:1px solid var(--hairline);
-    border-radius:6px;
-    padding:24px;
-    margin-bottom:20px;
-    background:var(--paper-dim);
-    transition: border-color 0.15s ease;
-  }
-  .proj-card:hover{border-color:var(--brick);}
-  .proj-title{
-    font-family:'Newsreader', serif;
-    font-size:1.25rem;
-    font-weight:600;
-    margin:0 0 6px;
-    color:var(--ink);
-  }
-  .proj-stack{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11.5px;
-    color:var(--slate);
-    margin:0 0 12px;
-    letter-spacing:0.02em;
-  }
-  .proj-desc{font-size:14.5px; margin:0 0 14px;}
-  .proj-stats{
-    display:flex; gap:20px; flex-wrap:wrap;
-    margin:0 0 16px;
-    padding:14px 0;
-    border-top:1px solid var(--hairline);
-    border-bottom:1px solid var(--hairline);
-  }
-  .stat-num{
-    font-family:'Newsreader', serif;
-    font-size:1.5rem;
-    font-weight:600;
-    color:var(--brick);
-    display:block;
-    line-height:1;
-  }
-  .stat-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:10.5px;
-    color:var(--slate);
-    text-transform:uppercase;
-    letter-spacing:0.03em;
-  }
-  .proj-links{display:flex; gap:18px; font-size:13.5px; font-weight:500;}
+  .proj-card{border:1px solid var(--gray-200); border-radius:10px; padding:26px; margin-bottom:20px; background:var(--gray-100);}
+  .proj-title{font-size:1.2rem; font-weight:700; margin:0 0 6px; color:var(--ink);}
+  .proj-stack{font-size:12px; color:var(--gray-500); margin:0 0 14px; font-weight:600; letter-spacing:0.03em; text-transform:uppercase;}
+  .proj-desc{font-size:14.5px; margin:0 0 16px;}
+  .proj-stats{display:flex; gap:24px; flex-wrap:wrap; margin:0 0 18px; padding:16px 0; border-top:1px solid var(--gray-200); border-bottom:1px solid var(--gray-200);}
+  .stat-num-sm{font-size:1.4rem; font-weight:800; color:var(--maroon); display:block; line-height:1;}
+  .stat-label-sm{font-size:11px; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.03em; font-weight:600;}
+  .proj-links{display:flex; gap:18px; font-size:13.5px; font-weight:600; flex-wrap:wrap;}
 
-  /* ---------- PUBLICATIONS ---------- */
-  .pub-item{padding:18px 0; border-top:1px solid var(--hairline);}
+  .pub-item{padding:20px 0; border-top:1px solid var(--gray-200);}
   .pub-item:first-of-type{border-top:none; padding-top:0;}
-  .pub-title{font-weight:600; font-size:15.5px; color:var(--ink); margin:0 0 4px;}
-  .pub-venue{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px; color:var(--brick); margin:0 0 8px;
-  }
+  .pub-title{font-weight:700; font-size:15.5px; color:var(--ink); margin:0 0 4px;}
+  .pub-venue{font-size:12.5px; color:var(--maroon); margin:0 0 8px; font-weight:600;}
   .pub-desc{font-size:14px; margin:0 0 8px;}
 
-  /* ---------- SKILLS ---------- */
-  .skills-grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:24px;
-  }
-  .skill-cat-name{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11.5px;
-    color:var(--brick);
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    margin:0 0 10px;
-  }
-  .skill-list{font-size:14px; color:var(--slate); margin:0;}
+  .skills-grid{display:grid; grid-template-columns: repeat(2, 1fr); gap:24px;}
+  .skill-cat-name{font-size:11.5px; color:var(--maroon); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 10px; font-weight:700;}
+  .skill-list{font-size:14px; color:var(--gray-700); margin:0;}
 
-  /* ---------- CONTACT / FOOTER ---------- */
-  footer{
-    padding:48px 0 64px;
-  }
-  .contact-links{
-    display:flex; flex-wrap:wrap; gap:16px 28px;
-    margin-bottom:24px;
-  }
-  .contact-links a{
-    font-size:15px; font-weight:500;
-  }
-  .footer-meta{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11.5px;
-    color:var(--slate);
-    opacity:0.7;
-  }
+  footer{padding:48px 0 64px;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:16px 28px; margin-bottom:24px;}
+  .contact-links a{font-size:15px; font-weight:600;}
+  .footer-meta{font-size:12px; color:var(--gray-500);}
 
   @media (max-width: 640px){
-    header.hero{padding:64px 0 44px;}
+    header.hero{padding:56px 0 40px;}
     section{padding:40px 0;}
     .tl-item{grid-template-columns: 1fr; gap:4px;}
     .skills-grid{grid-template-columns: 1fr;}
+    .nav-links{gap:16px;}
   }
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <span class="nav-name">R. FRANÇA CHAVES</span>
+    <span class="nav-name">Rodrigo França Chaves</span>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#projects">Work</a></li>
       <li><a href="#publications">Research</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -288,21 +139,17 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="coord">41.7886° N, 87.5987° W — CHICAGO, IL</p>
-    <h1>Rodrigo França Chaves</h1>
-    <p class="hero-sub">I study how cities work — using causal inference and machine learning to understand housing markets, public services, and the policies that shape urban life.</p>
-    <div class="hero-tags">
-      <span class="tag">Causal Inference</span>
-      <span class="tag">Spatial Econometrics</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Urban Policy</span>
+    <p class="eyebrow">Data &amp; policy analytics — Chicago, IL</p>
+    <h1>I turn messy data into decisions people can act on.</h1>
+    <p class="hero-sub">Quantitative analyst specializing in causal inference, machine learning, and spatial analysis — applied to housing markets, urban policy, and public programs.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">View my work</a>
+      <a href="mailto:rodrigofrancachaves99@gmail.com" class="btn btn-secondary">Get in touch</a>
     </div>
-    <div class="hero-links">
-      <a href="#contact">Get in touch</a>
-      <a href="https://github.com/Rodrigofch7" target="_blank" rel="noopener">GitHub</a>
-      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="#" target="_blank" rel="noopener">Google Scholar</a>
-      <a href="#" target="_blank" rel="noopener">CV (PDF)</a>
+    <div class="stats">
+      <div><div class="stat-num">3</div><div class="stat-label">Countries analyzed</div></div>
+      <div><div class="stat-num">1.1M</div><div class="stat-label">Properties modeled</div></div>
+      <div><div class="stat-num">2</div><div class="stat-label">Published papers</div></div>
     </div>
   </div>
 </header>
@@ -310,11 +157,12 @@
 <section id="about">
   <div class="wrap">
     <p class="eyebrow">About</p>
-    <h2>Methods meet place</h2>
+    <h2>What I do</h2>
     <div class="about-grid">
-      <p>I'm a Master's candidate in Computational Analysis and Public Policy at the University of Chicago, where I work at the intersection of econometrics and applied machine learning. My research asks how policy interventions — from privatization to police body cameras to data center construction — shape outcomes in the cities where they happen.</p>
-      <p>Before Chicago, I spent two years at Insper's Cities Lab in São Paulo, applying difference-in-differences and spatial regression to questions in Brazilian urban economics. That work produced a peer-reviewed publication and a forthcoming paper on policing. I'm currently a Research Assistant at the Mansueto Institute for Urban Innovation, building computer vision pipelines to digitize historical maps for large-scale urban research, and I spent the summer of 2026 with the World Bank's Development Impact Evaluation team in Washington, DC.</p>
-      <p>I'm a native Portuguese speaker, fluent in English, and conversational in Spanish — and I think in QGIS as often as I think in R.</p>
+      <p>I'm a Master's candidate in Computational Analysis and Public Policy at the University of Chicago, where I work at the intersection of data science, economics, and public policy. I build models and pipelines that turn raw, messy data — satellite imagery, century-old archives, property tax records — into evidence people can actually use to make decisions.</p>
+      <p>My background spans applied machine learning (LightGBM pipelines processing millions of records), causal inference (difference-in-differences, regression discontinuity, panel econometrics), and spatial and remote-sensing analysis (GIS, satellite imagery, OCR-based archival digitization). I've applied these methods to housing markets, transit infrastructure, water systems, and policing outcomes across Brazil, Senegal, India, and the United States — work that's produced a peer-reviewed publication and a forthcoming paper.</p>
+      <p>Most recently, I spent the summer with the World Bank's Development Impact Evaluation team in Washington, DC, where I used satellite imagery to study urbanization around a new transit line in Dakar and analyzed property tax data in Mumbai to detect assessment anomalies. I currently work as a research assistant at UChicago's Mansueto Institute, where I've digitized over a century of archival records and merged them with historical census data to map the spatial evolution of Chicago's industrial base.</p>
+      <p>I'm a native Portuguese speaker, fluent in English, and conversational in Spanish.</p>
     </div>
   </div>
 </section>
@@ -329,7 +177,7 @@
       <div>
         <p class="tl-role">Research Intern, DIME</p>
         <p class="tl-org">World Bank — Washington, DC</p>
-        <p class="tl-desc">Applying RCT-based impact evaluation frameworks and administrative data analysis to development policy research within the World Bank's applied econometrics division.</p>
+        <p class="tl-desc">Extracted urban development indicators from satellite imagery to evaluate the impact of a dedicated Bus Rapid Transit line on urbanization patterns in Dakar, Senegal. Separately, analyzed property tax and housing data for Mumbai to detect bunching anomalies consistent with assessment manipulation, informing the World Bank's public revenue and urban policy research agenda.</p>
       </div>
     </div>
 
@@ -337,25 +185,16 @@
       <div class="tl-date">Mar 2026 — Present</div>
       <div>
         <p class="tl-role">Graduate Research Assistant</p>
-        <p class="tl-org">Mansueto Institute for Urban Innovation, UChicago</p>
-        <p class="tl-desc">Designed scalable pipelines to digitize and georeference historical map archives, and applied computer vision to produce novel datasets for spatial econometric analysis of urban development and housing markets.</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">Feb 2026 — Present</div>
-      <div>
-        <p class="tl-role">Research Assistant, MiiE Lab</p>
-        <p class="tl-org">University of Chicago</p>
-        <p class="tl-desc">Designed evaluation frameworks benchmarking LLM interpretations of K-12 textbooks, measuring accuracy, pedagogical alignment, and bias at scale.</p>
+        <p class="tl-org"><a href="https://miurban.uchicago.edu/" target="_blank" rel="noopener">Mansueto Institute for Urban Innovation, UChicago</a></p>
+        <p class="tl-desc">Digitized over a century of archival records using OCR, then merged the extracted data with historical census records to build novel datasets tracing the spatial distribution of industry across Chicago from the early to mid-20th century.</p>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-date">2023 — 2025</div>
       <div>
-        <p class="tl-role">Research Assistant, Insper Cities Lab (Arq.Futuro)</p>
-        <p class="tl-org">São Paulo, Brazil</p>
+        <p class="tl-role">Research Assistant, Insper Cities Lab</p>
+        <p class="tl-org"><a href="https://arqfuturo.com.br/sobre" target="_blank" rel="noopener">Arq.Futuro — São Paulo, Brazil</a></p>
         <p class="tl-desc">Causal evaluation of urban policy using DiD, RDD, and spatial regression. Produced one peer-reviewed publication and one forthcoming working paper. Mentored undergraduates on research design and methodology.</p>
       </div>
     </div>
@@ -364,7 +203,7 @@
       <div class="tl-date">2023 — 2025</div>
       <div>
         <p class="tl-role">Teaching Assistant — GIS, Econometrics &amp; R</p>
-        <p class="tl-org">Insper, São Paulo</p>
+        <p class="tl-org"><a href="https://www.insper.edu.br/en/home" target="_blank" rel="noopener">Insper, São Paulo</a></p>
         <p class="tl-desc">Supported 50+ students in applied econometrics and spatial analysis; coordinated an intensive field course with municipal stakeholders.</p>
       </div>
     </div>
@@ -373,30 +212,31 @@
 
 <section id="projects">
   <div class="wrap">
-    <p class="eyebrow">Projects</p>
-    <h2>Selected work</h2>
+    <p class="eyebrow">Work</p>
+    <h2>Selected projects</h2>
 
     <div class="proj-card">
       <p class="proj-title">NYC Property Tax Assessment</p>
-      <p class="proj-stack">PYTHON · LIGHTGBM · SCIKIT-LEARN · PARQUET</p>
+      <p class="proj-stack">Python · LightGBM · scikit-learn · Parquet</p>
       <p class="proj-desc">An end-to-end ML pipeline classifying all 1.1M NYC properties (FY2015–2027) as over-, under-, or fairly valued, using a novel 6-level peer-group labeling methodology and 138 engineered features spanning assessment trends, YoY acceleration, and ZIP/building-class aggregates.</p>
       <div class="proj-stats">
-        <div><span class="stat-num">1.1M</span><span class="stat-label">Properties</span></div>
-        <div><span class="stat-num">87.6%</span><span class="stat-label">Accuracy</span></div>
-        <div><span class="stat-num">0.867</span><span class="stat-label">F1-Macro</span></div>
-        <div><span class="stat-num">138</span><span class="stat-label">Features</span></div>
+        <div><span class="stat-num-sm">1.1M</span><span class="stat-label-sm">Properties</span></div>
+        <div><span class="stat-num-sm">87.6%</span><span class="stat-label-sm">Accuracy</span></div>
+        <div><span class="stat-num-sm">0.867</span><span class="stat-label-sm">F1-Macro</span></div>
+        <div><span class="stat-num-sm">138</span><span class="stat-label-sm">Features</span></div>
       </div>
       <div class="proj-links">
-        <a href="#" target="_blank" rel="noopener">View on GitHub →</a>
+        <a href="https://github.com/Rodrigofch7/nyc_property_taxes_local" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
     </div>
 
     <div class="proj-card">
       <p class="proj-title">Data Centers Next Door</p>
-      <p class="proj-stack">R · SHINY · SPATIAL ECONOMETRICS</p>
-      <p class="proj-desc">A spatial hedonic price analysis of how proximity to data center infrastructure affects Chicago housing markets, integrating georeferenced infrastructure and transaction data into an interactive dashboard for exploring the relationship between cloud computing buildout and local housing costs.</p>
+      <p class="proj-stack">R · Shiny · Spatial Econometrics</p>
+      <p class="proj-desc">A spatial hedonic price analysis of how proximity to data center infrastructure affects Chicago housing markets, integrating georeferenced infrastructure and transaction data into an interactive dashboard exploring the relationship between cloud computing buildout and local housing costs.</p>
       <div class="proj-links">
-        <a href="#" target="_blank" rel="noopener">View on GitHub →</a>
+        <a href="https://github.com/Rodrigofch7/data-centers-urban-effects" target="_blank" rel="noopener">View on GitHub →</a>
+        <a href="https://rodrigofrancac.shinyapps.io/project-datacenter-urban-effects/" target="_blank" rel="noopener">Live dashboard →</a>
       </div>
     </div>
 
@@ -412,14 +252,14 @@
       <p class="pub-title">Private Ownership of Water and Wastewater Systems: Assessing Health Impacts</p>
       <p class="pub-venue">Utilities Policy — Peer-Reviewed Journal Article</p>
       <p class="pub-desc">A causal evaluation of water privatization effects on waterborne disease in Brazil (1998–2021), using panel data econometrics and difference-in-differences identification.</p>
-      <a href="#" target="_blank" rel="noopener">Read the paper →</a>
+      <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957178725000189?dgcid=author" target="_blank" rel="noopener">Read the paper →</a>
     </div>
 
     <div class="pub-item">
       <p class="pub-title">Resistance to Doing Right: Rising Cost of Misconduct from Body-Worn Camera Adoption</p>
       <p class="pub-venue">Working Paper — Forthcoming</p>
       <p class="pub-desc">Examines unintended consequences of body-worn camera adoption on police misconduct and de-policing in São Paulo, using staggered difference-in-differences on administrative crime microdata.</p>
-      <a href="#" target="_blank" rel="noopener">Read the draft →</a>
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5441274" target="_blank" rel="noopener">Read the draft on SSRN →</a>
     </div>
   </div>
 </section>
@@ -457,8 +297,8 @@
     <div class="contact-links">
       <a href="mailto:rodrigofrancachaves99@gmail.com">rodrigofrancachaves99@gmail.com</a>
       <a href="https://github.com/Rodrigofch7" target="_blank" rel="noopener">GitHub</a>
-      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/rodrigofrancac/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com.br/citations?view_op=list_works&hl=pt-BR&authuser=1&user=6D65dqUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
     </div>
     <p class="footer-meta">Chicago, IL · Brazilian Citizen — F1 Visa (STEM OPT Eligible)</p>
   </div>
