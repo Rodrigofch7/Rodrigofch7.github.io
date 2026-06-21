@@ -149,9 +149,9 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Work</a></li>
       <li><a href="#publications">Research</a></li>
-      <li><a href="#contact">Looking for</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#looking">Looking for</a></li>
     </ul>
   </div>
 </nav>
@@ -163,7 +163,7 @@
     <p class="hero-sub">Quantitative analyst working across machine learning, causal inference, and large-scale data, turning complex evidence into clear, defensible answers on housing, transit, crime, taxes and urban policy.</p>
     <div class="btn-row">
       <a href="#projects" class="btn btn-primary">View my work</a>
-      <a href="https://drive.google.com/file/d/1naPkn_SRBM4VrQWzVN2NUJxCbc8xG1Ot/view?usp=sharing" class="btn btn-secondary" target="_blank" rel="noopener">Download CV</a>
+      <a href="https://drive.google.com/file/d/1FHtCV_xiSsa5V3_CqhXVRrGxlLNuRwPk/view?usp=sharing" class="btn btn-secondary" target="_blank" rel="noopener">Download CV</a>
     </div>
     <div class="hero-contacts">
       <button type="button" class="contact-chip" data-copy="rodrigofrancachaves99@gmail.com">
@@ -246,39 +246,6 @@
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <p class="eyebrow">Work</p>
-    <h2>Selected projects</h2>
-
-    <div class="proj-card">
-      <p class="proj-title">NYC Property Tax Assessment</p>
-      <p class="proj-stack">Python · LightGBM · scikit-learn</p>
-      <p class="proj-desc">An end-to-end ML pipeline classifying all 1.1M NYC properties (FY2015–2027) as over-, under-, or fairly valued, using a novel 6-level peer-group labeling methodology and 138 engineered features spanning assessment trends, YoY acceleration, and ZIP/building-class aggregates.</p>
-      <div class="proj-stats">
-        <div><span class="stat-num-sm">1.1M</span><span class="stat-label-sm">Properties</span></div>
-        <div><span class="stat-num-sm">87.6%</span><span class="stat-label-sm">Accuracy</span></div>
-        <div><span class="stat-num-sm">0.867</span><span class="stat-label-sm">F1-Macro</span></div>
-        <div><span class="stat-num-sm">138</span><span class="stat-label-sm">Features</span></div>
-      </div>
-      <div class="proj-links">
-        <a href="https://github.com/Rodrigofch7/nyc_property_taxes_local" target="_blank" rel="noopener">View on GitHub →</a>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <p class="proj-title">Data Centers Next Door</p>
-      <p class="proj-stack">R · Shiny · Spatial Econometrics</p>
-      <p class="proj-desc">A spatial hedonic price analysis of how proximity to data center infrastructure affects Chicago housing markets, integrating georeferenced infrastructure and transaction data into an interactive dashboard exploring the relationship between cloud computing buildout and local housing costs.</p>
-      <div class="proj-links">
-        <a href="https://github.com/Rodrigofch7/data-centers-urban-effects" target="_blank" rel="noopener">View on GitHub →</a>
-        <a href="https://rodrigofrancac.shinyapps.io/project-datacenter-urban-effects/" target="_blank" rel="noopener">Live dashboard →</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <section id="publications">
   <div class="wrap">
     <p class="eyebrow">Research</p>
@@ -300,6 +267,40 @@
   </div>
 </section>
 
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow">Work</p>
+    <h2>Selected projects</h2>
+
+    <div class="proj-card">
+      <p class="proj-title">NYC Property Tax Assessment</p>
+      <p class="proj-stack">Python · LightGBM · scikit-learn</p>
+      <p class="proj-desc">An end-to-end ML pipeline classifying all 1.1M NYC properties (FY2015–2027) as over-, under-, or fairly valued, using a novel 6-level peer-group labeling methodology and 138 engineered features spanning assessment trends, YoY acceleration, and ZIP/building-class aggregates.</p>
+      <div class="proj-stats">
+        <div><span class="stat-num-sm">1.1M</span><span class="stat-label-sm">Properties</span></div>
+        <div><span class="stat-num-sm">87.6%</span><span class="stat-label-sm">Accuracy</span></div>
+        <div><span class="stat-num-sm">0.867</span><span class="stat-label-sm">F1-Macro</span></div>
+        <div><span class="stat-num-sm">138</span><span class="stat-label-sm">Features</span></div>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Rodrigofch7/nyc_property_taxes_local" target="_blank" rel="noopener">View on GitHub →</a>
+        <a href="https://nycpropertytaxes.streamlit.app/" target="_blank" rel="noopener">Live dashboard →</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <p class="proj-title">Data Centers Next Door</p>
+      <p class="proj-stack">R · Shiny · Spatial Econometrics</p>
+      <p class="proj-desc">A spatial hedonic price analysis of how proximity to data center infrastructure affects Chicago housing markets, integrating georeferenced infrastructure and transaction data into an interactive dashboard exploring the relationship between cloud computing buildout and local housing costs.</p>
+      <div class="proj-links">
+        <a href="https://github.com/Rodrigofch7/data-centers-urban-effects" target="_blank" rel="noopener">View on GitHub →</a>
+        <a href="https://rodrigofrancac.shinyapps.io/project-datacenter-urban-effects/" target="_blank" rel="noopener">Live dashboard →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
     <p class="eyebrow">Skills</p>
@@ -307,11 +308,15 @@
     <div class="skills-grid">
       <div>
         <p class="skill-cat-name">Methods</p>
-        <p class="skill-list">Causal Inference (DiD, RDD, IV, Staggered DiD), Panel Econometrics, Machine Learning, Spatial Analysis, Remote Sensing, Program Evaluation</p>
+        <p class="skill-list">Causal Inference (DiD, RDD, IV, Staggered DiD), Panel Econometrics, Machine Learning, Spatial Analysis, Remote Sensing</p>
       </div>
       <div>
         <p class="skill-cat-name">Programming</p>
-        <p class="skill-list">Python, R, SQL, GIS, LaTeX</p>
+        <p class="skill-list">Python, R, SQL</p>
+      </div>
+      <div>
+        <p class="skill-cat-name">Tools</p>
+        <p class="skill-list">QGIS, Git, LaTeX, PostgreSQL</p>
       </div>
       <div>
         <p class="skill-cat-name">Building with</p>
@@ -325,10 +330,10 @@
   </div>
 </section>
 
-<footer id="contact">
+<footer id="looking">
   <div class="wrap">
-    <p class="eyebrow">Get in touch</p>
-    <h2>Let's talk</h2>
+    <p class="eyebrow">Looking for</p>
+    <h2>What I'm looking for</h2>
     <p>I'm looking for full-time roles starting mid-2027 in economic consulting, data science, applied research, and data-driven analytics, work where rigorous quantitative analysis informs high-stakes decisions. Reach out using any of the links above, and I'd love to hear from you.</p>
     <p class="footer-meta">Chicago, IL · Brazilian Citizen — F1 Visa (STEM OPT Eligible)</p>
   </div>
