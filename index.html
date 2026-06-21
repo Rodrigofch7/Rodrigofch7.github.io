@@ -74,8 +74,10 @@
     border:1px solid var(--border);
     border-radius:999px;
     font-size:13.5px; font-weight:600;
+    font-family:inherit;
     color:var(--text-soft);
     background:transparent;
+    cursor:pointer;
     transition:border-color .15s, color .15s, background .15s;
   }
   .contact-chip svg{flex-shrink:0; opacity:0.9;}
@@ -84,6 +86,11 @@
     color:var(--maroon-bright);
     background:var(--maroon-tint);
     text-decoration:none;
+  }
+  .contact-chip.copied{
+    border-color:#5BBF73;
+    color:#5BBF73;
+    background:rgba(91,191,115,0.10);
   }
 
   section{padding:56px 0; border-bottom:1px solid var(--border);}
@@ -160,14 +167,14 @@
       <a href="mailto:rodrigofrancachaves99@gmail.com" class="btn btn-secondary">Get in touch</a>
     </div>
     <div class="hero-contacts">
-      <a href="mailto:rodrigofrancachaves99@gmail.com" class="contact-chip">
+      <button type="button" class="contact-chip" data-copy="rodrigofrancachaves99@gmail.com">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>
         <span>Personal email</span>
-      </a>
-      <a href="mailto:rchaves@uchicago.edu" class="contact-chip">
+      </button>
+      <button type="button" class="contact-chip" data-copy="rchaves@uchicago.edu">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M21 7.5V12"/><path d="M6 9.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8V9.5"/></svg>
         <span>UChicago email</span>
-      </a>
+      </button>
       <a href="https://github.com/Rodrigofch7" target="_blank" rel="noopener" class="contact-chip">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
         <span>GitHub</span>
@@ -327,6 +334,39 @@
     <p class="footer-meta">Chicago, IL · Brazilian Citizen — F1 Visa (STEM OPT Eligible)</p>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.contact-chip[data-copy]').forEach(function(chip){
+    var label = chip.querySelector('span');
+    var original = label.textContent;
+    chip.addEventListener('click', function(){
+      var email = chip.getAttribute('data-copy');
+      var done = function(){
+        label.textContent = 'Email copied';
+        chip.classList.add('copied');
+        setTimeout(function(){
+          label.textContent = original;
+          chip.classList.remove('copied');
+        }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(email).then(done).catch(function(){ fallbackCopy(email); done(); });
+      } else {
+        fallbackCopy(email); done();
+      }
+    });
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+  }
+</script>
 
 </body>
 </html>
