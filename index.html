@@ -45,9 +45,9 @@
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--border);
   }
-  nav .wrap{display:flex; justify-content:space-between; align-items:center; padding:16px 24px;}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:16px 24px;}
   .nav-name{font-size:14px; font-weight:700; letter-spacing:-0.01em; color:var(--text);}
-  .nav-links{display:flex; gap:24px; list-style:none; margin:0; padding:0;}
+  .nav-links{display:flex; gap:24px; flex-wrap:wrap; list-style:none; margin:0; padding:0;}
   .nav-links a{font-size:14px; font-weight:500; color:var(--text-soft); text-decoration:none;}
   .nav-links a:hover{color:var(--maroon-bright);}
 
@@ -78,6 +78,7 @@
     color:var(--text-soft);
     background:transparent;
     cursor:pointer;
+    white-space:nowrap;
     transition:border-color .15s, color .15s, background .15s;
   }
   .contact-chip svg{flex-shrink:0; opacity:0.9;}
@@ -198,6 +199,7 @@
     <div class="about-grid">
       <p>I'm a Master's candidate in Computational Analysis and Public Policy at the University of Chicago, where I work at the intersection of data science, economics, and public policy. I build models and pipelines that turn raw, messy data, like satellite imagery, century-old archives, and property tax records, into evidence people can actually use to make decisions.</p>
       <p>My work spans applied machine learning (gradient-boosted models on datasets of millions of records), causal inference (difference-in-differences, regression discontinuity, panel econometrics), and geospatial analysis (remote sensing, georeferencing, spatial modeling at scale). I've applied these methods to housing markets, transit infrastructure, water systems, and policing across Brazil, Senegal, India, and the United States. I care as much about explaining the result clearly as about getting it right.</p>
+      <p>Working at the policy level means I read the rules alongside the data: I'm fluent in how zoning and land-use regulation, property tax assessment, and utility and infrastructure policy actually operate, and I translate that regulatory detail into analysis that holds up to scrutiny from agencies, courts, and clients.</p>
       <p>Most recently, I spent the summer with the World Bank's Development Impact Evaluation team in Washington, DC, where I used satellite imagery to study urbanization around a new transit line in Dakar and analyzed property tax data in Mumbai to detect assessment anomalies. I currently work at UChicago's Mansueto Institute, where I've digitized over a century of archival records and merged them with historical census data to map the spatial evolution of Chicago's industry.</p>
       <p>I'm also a committed cyclist, which is part of why the way cities move people, and who they're built for, is the question I keep coming back to. Native Portuguese speaker, fluent in English, conversational in Spanish.</p>
     </div>
@@ -323,7 +325,11 @@
       </div>
       <div>
         <p class="skill-cat-name">Tools</p>
-        <p class="skill-list">QGIS, Git, LaTeX, PostgreSQL</p>
+        <p class="skill-list">QGIS, ArcGIS, Git, LaTeX, PostgreSQL, Excel</p>
+      </div>
+      <div>
+        <p class="skill-cat-name">Policy &amp; Regulation</p>
+        <p class="skill-list">Zoning &amp; land-use regulation, property tax assessment &amp; valuation, housing &amp; urban policy, utility &amp; infrastructure regulation, regulatory &amp; compliance analysis, program &amp; impact evaluation</p>
       </div>
       <div>
         <p class="skill-cat-name">Building with</p>
