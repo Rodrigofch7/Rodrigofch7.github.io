@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rodrigo França Chaves — Data & Research</title>
 <meta name="description" content="Rodrigo França Chaves — Quantitative analyst applying machine learning and causal inference to housing, transit, and urban policy.">
+<meta property="og:title" content="Rodrigo França Chaves — Data &amp; Research">
+<meta property="og:description" content="Quantitative analyst applying machine learning and causal inference to housing, transit, and urban policy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rodrigofch7.github.io/">
+<meta property="og:image" content="https://rodrigofch7.github.io/assets/rodrigo-headshot@2x.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/rodrigo-headshot.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,6 +59,15 @@
   .nav-links a:hover{color:var(--maroon-bright);}
 
   header.hero{padding:88px 0 56px;}
+  .hero-top{display:grid; grid-template-columns:1fr 168px; gap:36px; align-items:start;}
+  .hero-portrait{
+    width:168px; height:168px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    border:1px solid var(--border);
+    box-shadow:0 0 0 4px var(--bg-soft);
+  }
   .eyebrow{font-size:13px; font-weight:700; color:var(--maroon-bright); text-transform:uppercase; letter-spacing:0.06em; margin:0 0 16px;}
   h1{font-weight:800; font-size:clamp(2.2rem, 5.5vw, 3rem); line-height:1.12; margin:0 0 20px; letter-spacing:-0.025em; color:var(--text);}
   .hero-sub{font-size:18px; color:var(--text-soft); max-width:540px; margin:0 0 32px;}
@@ -136,6 +152,8 @@
 
   @media (max-width: 640px){
     header.hero{padding:56px 0 40px;}
+    .hero-top{grid-template-columns:1fr; gap:24px;}
+    .hero-portrait{width:120px; height:120px; order:-1;}
     section{padding:40px 0;}
     .tl-item{grid-template-columns: 1fr; gap:4px;}
     .skills-grid{grid-template-columns: 1fr;}
@@ -160,12 +178,20 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Data &amp; research — Chicago, IL</p>
-    <h1>I turn messy data into decisions people can act on.</h1>
-    <p class="hero-sub">Quantitative analyst working across machine learning, causal inference, and large-scale data, turning complex evidence into clear, defensible answers on housing, transit, crime, taxes and urban policy.</p>
-    <div class="btn-row">
-      <a href="#projects" class="btn btn-primary">View my work</a>
-      <a href="https://drive.google.com/file/d/11LOuBViF52qJj-L1lCl9u_Hv-NAqBWpV/view?usp=sharing" class="btn btn-secondary" target="_blank" rel="noopener">Download CV</a>
+    <div class="hero-top">
+      <div>
+        <p class="eyebrow">Data &amp; research — Chicago, IL</p>
+        <h1>I turn messy data into decisions people can act on.</h1>
+        <p class="hero-sub">Quantitative analyst working across machine learning, causal inference, and large-scale data, turning complex evidence into clear, defensible answers on housing, transit, crime, taxes and urban policy.</p>
+        <div class="btn-row">
+          <a href="#projects" class="btn btn-primary">View my work</a>
+          <a href="https://drive.google.com/file/d/11LOuBViF52qJj-L1lCl9u_Hv-NAqBWpV/view?usp=sharing" class="btn btn-secondary" target="_blank" rel="noopener">Download CV</a>
+        </div>
+      </div>
+      <img class="hero-portrait" src="assets/rodrigo-headshot.jpg"
+           srcset="assets/rodrigo-headshot.jpg 480w, assets/rodrigo-headshot@2x.jpg 960w"
+           sizes="168px" width="168" height="168"
+           alt="Portrait of Rodrigo França Chaves">
     </div>
     <div class="hero-contacts">
       <button type="button" class="contact-chip" data-copy="rodrigofrancachaves99@gmail.com">

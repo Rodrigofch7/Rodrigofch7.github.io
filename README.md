@@ -15,6 +15,10 @@ Single-page personal portfolio built with plain HTML/CSS/JS — no framework, no
   - `-crf 28`: quality/size tradeoff (lower = better quality, bigger file)
   - `-an`: strips audio (not needed for silent looping demos)
   - Videos embedded with `autoplay loop muted playsinline` for lightweight, hands-off looping
+- Hero headshot resized with `ffmpeg` to a 480px `1x` and a 960px `2x` variant, served via `srcset` (also used as the Open Graph preview image and favicon):
+  ```bash
+  ffmpeg -i input.jpeg -vf "scale=480:480:flags=lanczos" -q:v 3 assets/rodrigo-headshot.jpg
+  ```
 
 ## Structure
 - `index.html` — everything (markup, styles, script) in one file
