@@ -15,6 +15,13 @@ Single-page personal portfolio built with plain HTML/CSS/JS — no framework, no
   - `-crf 28`: quality/size tradeoff (lower = better quality, bigger file)
   - `-an`: strips audio (not needed for silent looping demos)
   - Videos embedded with `autoplay loop muted playsinline` for lightweight, hands-off looping
+- Social/link preview card (`assets/og-card.jpg`, 1200×630) — the image LinkedIn, X, Slack, etc. show when the site is shared. Edit `assets/og-card.source.html`, then re-render:
+  ```bash
+  chrome --headless --force-device-scale-factor=2 --window-size=1200,630 \
+    --screenshot=card.png assets/og-card.source.html
+  ffmpeg -y -i card.png -vf scale=1200:630 -q:v 3 assets/og-card.jpg
+  ```
+  - After deploying a new card, refresh LinkedIn's cache via the [Post Inspector](https://www.linkedin.com/post-inspector/)
 - Hero headshot resized with `ffmpeg` to a 480px `1x` and a 960px `2x` variant, served via `srcset` (also used as the Open Graph preview image and favicon):
   ```bash
   ffmpeg -i input.jpeg -vf "scale=480:480:flags=lanczos" -q:v 3 assets/rodrigo-headshot.jpg
