@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="RC monogram">
+  <style>
+    .bg { fill: #14110F; }
+    .fg { fill: #C9505E; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #FAF7F2; }
+      .fg { fill: #A32F3D; }
+    }
+  </style>
+  <rect class="bg" width="64" height="64" rx="13"/>
+  <text class="fg" x="32" y="45" text-anchor="middle"
+        font-family="Inter, Helvetica, Arial, sans-serif"
+        font-size="34" font-weight="800" letter-spacing="-1.5">RC</text>
+</svg>

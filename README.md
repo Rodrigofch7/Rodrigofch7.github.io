@@ -22,6 +22,18 @@ Single-page personal portfolio built with plain HTML/CSS/JS — no framework, no
   ffmpeg -y -i card.png -vf scale=1200:630 -q:v 3 assets/og-card.jpg
   ```
   - After deploying a new card, refresh LinkedIn's cache via the [Post Inspector](https://www.linkedin.com/post-inspector/)
+- Publication thumbnails are capped at 560px wide (2× their 280px display size):
+  ```bash
+  ffmpeg -y -i original.jpg -vf scale=560:-2 -q:v 7 assets/pub_name.jpg
+  ```
+- Video poster frames (first frame, shown before the video decodes):
+  ```bash
+  ffmpeg -y -i assets/video_x.mp4 -vf "select=eq(n\,0),scale=900:-2" -frames:v 1 -q:v 5 assets/poster_x.jpg
+  ```
+- Favicon is an "RC" monogram in `assets/favicon.svg`, which carries its own
+  `prefers-color-scheme` block so it adapts to the browser's tab theme.
+  `assets/favicon-64.png` is the raster fallback, rasterised by screenshotting the SVG
+  in headless Chrome at 64×64.
 - Hero headshot resized with `ffmpeg` to a 480px `1x` and a 960px `2x` variant, served via `srcset` (also used as the Open Graph preview image and favicon):
   ```bash
   ffmpeg -i input.jpeg -vf "scale=480:480:flags=lanczos" -q:v 3 assets/rodrigo-headshot.jpg
