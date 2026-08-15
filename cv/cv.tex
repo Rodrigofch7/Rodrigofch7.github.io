@@ -36,6 +36,10 @@
 \usepackage{titlesec}
 \usepackage{array}
 
+% Improves justification so fewer words break across lines
+\usepackage{microtype}
+\hyphenation{peer-reviewed pro-duced iden-ti-fiers}
+
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -69,7 +73,7 @@
   \noindent\textbf{#1}\\[0.5pt]
   {\small\textit{#2}}\\[0.5pt]
   {\small #3}%
-  \par\vspace{4pt}%
+  \par\vspace{7pt}%
 }
 
 \newcommand{\cvproject}[4]{%
@@ -109,7 +113,7 @@
 
 %── SUMMARY ───────────────────────────────────────────────────────────────────
 {\small
-Quantitative analyst who turns large administrative datasets — property assessments, tax records, transactions, satellite imagery — into evidence that holds up under scrutiny. Combines causal inference with machine learning to detect valuation anomalies, quantify the effects of regulation, and explain the result to people who did not build the model. Peer-reviewed work in regulatory economics; applied experience across housing, tax, transit, and public-policy problems in four countries. Seeking full-time roles in economic consulting, applied research, and data-driven analytics.
+Applied economist working on property taxation, housing markets, and utility regulation. First author of a peer-reviewed article in \textit{Utilities Policy} estimating the health effects of water privatization across two decades of Brazilian municipal data. Builds the evidence base for regulatory and valuation questions from large administrative sources — assessment rolls, transaction records, disease registries, satellite imagery — pairing quasi-experimental identification with machine learning, and defending the result to audiences that did not build the model. Seeking full-time roles in economic consulting and applied economic analysis.
 \par}
 
 %── EDUCATION ─────────────────────────────────────────────────────────────────
@@ -133,36 +137,39 @@ Coursework: Machine Learning for Public Policy, Applied Econometrics, Data Engin
 \section{Publications \& Working Papers}
 
 \cvpub{\href{https://www.sciencedirect.com/science/article/abs/pii/S0957178725000189}{Private Ownership of Water and Wastewater Systems: Assessing Health Impacts}}
-      {Utilities Policy — Peer-Reviewed Journal Article}
-      {Estimates the health consequences of transferring water and sanitation systems to private operators in Brazil (1998–2021), using panel econometrics and difference-in-differences on two decades of municipal administrative data — evidence directly relevant to concession and rate-setting debates.}
+      {Utilities Policy — Peer-Reviewed Journal Article \textnormal{(first author)}}
+      {Evaluates whether Brazil's 2020 opening of water and sanitation systems to private operators was sound policy, comparing hundreds of closely matched municipalities before and after transfer (1998–2021) via panel econometrics and difference-in-differences. Finds private operation reduced waterborne disease on average, with the largest effects on diarrheal disease among children — direct evidence for concession design and rate-setting debates.}
 
 \cvpub{\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5441274}{Resistance to Doing Right: Rising Cost of Misconduct from Body-Worn Camera Adoption}}
-      {Working Paper — In Progress}
-      {Identifies the unintended effects of body-worn camera adoption on police misconduct and de-policing in São Paulo, exploiting a staggered rollout via staggered difference-in-differences on administrative crime microdata.}
+      {Working Paper — In Progress \textnormal{(co-author)}}
+      {Estimates how body-worn cameras changed police behavior in São Paulo, using confidential police administrative microdata obtained for the study and a staggered rollout for identification. Preliminary results show fewer police confrontations alongside more crime recorded in heavily equipped areas, a pattern consistent with both de-policing and improved reporting; identification is still being tightened.}
 
 %── WORK EXPERIENCE ──────────────────────────────────────────────────────────
 \section{Work Experience}
 
 \cventry{Data Science \& Research Intern — DECDI (Formerly DIME)}{World Bank}{Washington, DC}{Summer 2026}
 \begin{itemize}
-  \item Analyzed Mumbai property tax and housing records for bunching at assessment thresholds — a statistical signature of valuation manipulation — isolating where declared values cluster in ways market fundamentals do not explain.
-  \item Measured how a dedicated Bus Rapid Transit corridor reshaped urbanization in Dakar, Senegal, deriving built-environment indicators from satellite imagery where no reliable ground-level administrative data existed.
+  \item Reconstructed four decades of Mumbai property tax and land-use policy into a single consistent timeline, then tested assessment records for bunching at policy thresholds to establish whether declared values showed statistical signatures of manipulation.
+  \item Quantified how Mumbai's market for additional floor area splits across regulatory instruments (TDR, Premium FSI, Fungible FSI), identifying which mechanism developers actually use and how market, regulatory, and political conditions drive that choice.
+  \item Measured the urbanization response to Dakar's new Bus Rapid Transit corridor, deriving built-environment indicators from satellite imagery via remote sensing where no reliable ground-level administrative data existed. \textit{(Findings confidential to the World Bank.)}
 \end{itemize}
 
 \vspace{3pt}
 
 \cventry{Graduate Research Assistant}{Mansueto Institute for Urban Innovation, UChicago}{Chicago, IL}{Mar 2026 – Present}
 \begin{itemize}
-  \item Digitized over a century of archival records using OCR and linked them to historical census data, building a novel dataset that traces the spatial distribution of industry across Chicago from the early to mid-20th century.
-  \item Built scalable pipelines to clean, georeference, and structure unstructured archival material into analysis-ready panels, making previously unusable sources available for spatial econometric research on urban development and housing markets.
+  \item Built an end-to-end digitization pipeline — page segmentation, OCR, structured extraction — for century-old cloth-bound fire insurance registers and Library of Congress holdings, converting records that had never been machine-readable into analysis-ready data.
+  \item Extracted thousands of firm addresses from hundreds of register pages and linked them to three historical censuses by street, then applied NLP to firm-name patterns to classify establishments across hundreds of industries — producing a dataset of industrial location and organization in 20th-century Chicago that did not previously exist.
+  \item Returning Sep 2026 to write the method up as a research paper documenting the pipeline for replication by other archival-data researchers.
 \end{itemize}
 
 \vspace{3pt}
 
 \cventry{Research Assistant}{Insper Cities Lab (Arq.Futuro)}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
 \begin{itemize}
-  \item Designed and executed quasi-experimental evaluations of public policy across Brazilian municipalities; work produced one peer-reviewed publication (\textit{Utilities Policy}) and one working paper in progress.
-  \item Assembled and reconciled administrative microdata from multiple government sources, resolving inconsistent identifiers and coverage gaps to make municipal panels comparable across two decades.
+  \item Two years of quasi-experimental policy evaluation across utilities, crime, property taxation, regulation, and real estate markets, working with municipal panels running to millions of records on home prices, tax assessments, and disease incidence.
+  \item First-authored the resulting \textit{Utilities Policy} article on water privatization and public health, and co-authored an in-progress working paper on police body cameras.
+  \item Reconciled administrative microdata from multiple government sources, resolving inconsistent identifiers and coverage gaps to make municipal panels comparable across two decades — the step that made the privatization analysis identifiable at all.
   \item Mentored undergraduate researchers on research design, econometric methodology, and academic writing; coordinated cross-functional teams under firm publication deadlines.
 \end{itemize}
 
@@ -170,28 +177,29 @@ Coursework: Machine Learning for Public Policy, Applied Econometrics, Data Engin
 
 \cventry{Teaching Assistant — GIS, Econometrics \& R}{Insper}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
 \begin{itemize}
-  \item Taught applied econometrics, GIS, and R programming to 50+ undergraduate and graduate students; supervised an intensive field course requiring direct coordination with municipal officials.
-  \item Developed hands-on exercises that translate causal inference and spatial regression into results students can reproduce, interpret, and defend.
+  \item Taught GIS and R to 50+ students, applying spatial analysis to São Paulo's real estate market, transit infrastructure, population density, and urban models of settlement — density and land-value gradients from the center outward.
+  \item Advised undergraduate theses through Brazil's required capstone; one placed second in its cohort.
+  \item Supervised an intensive field course requiring direct coordination with municipal officials.
 \end{itemize}
 
 %── PROJECTS ─────────────────────────────────────────────────────────────────
 \section{Projects}
 
-\cvproject{NYC Property Tax Assessment}
+\cvproject{NYC Property Tax: A Horizontal-Equity Audit}
           {Python · LightGBM · scikit-learn}
           {\href{https://github.com/Rodrigofch7/nyc_property_taxes_local}{[GitHub]} \enspace \href{https://nycpropertytaxes.streamlit.app/}{[Live Dashboard]}}
-          {End-to-end ML pipeline classifying all 1.1M NYC properties (FY2015–2027) as over-, under-, or fairly valued, so a review team can target the properties most likely to be misassessed instead of auditing at random. Designed a novel 6-level peer-group labeling methodology and engineered 138 features (assessment trends, YoY acceleration, ZIP and building-class aggregates, OLS projections); LightGBM reached 87.6\% accuracy and 0.867 F1-macro against a 57\% majority-class baseline. Runs reproducibly at full scale via memory-safe chunked ingestion and checkpoint-resumable tuning.}
+          {Horizontal-equity audit of New York's assessment roll, testing whether comparable properties carry comparable tax burdens. Benchmarking all 1.1M properties against their peer-group median assessed value per square foot found roughly 43\% sitting more than 15\% away from their peers — 245k above, 227k below. Within one peer group of 1940s Queens two-family homes worth about \$750k, assessments ranged from \$12.09 to \$45.88 per square foot: a near-fourfold gap in effective tax rate produced by purchase date under NYC's Class 1 assessment cap rather than by any difference in the properties. Tightening peer groups from quintile to ventile value bins cut within-group price spread from \$475k to \$48k, trading a small F1 loss for labels that carry meaning — the judgment call the project turned on. Six peer dimensions with a five-level fallback, 138 leak-free engineered features, LightGBM, and a Streamlit prototype for audit triage. Three-person course project.}
 
 \cvproject{Data Centers Next Door: Cloud Infrastructure and Housing Costs}
           {R · Shiny · Spatial Econometrics}
           {\href{https://github.com/Rodrigofch7/data-centers-urban-effects}{[GitHub]} \enspace \href{https://rodrigofrancac.shinyapps.io/project-datacenter-urban-effects/}{[Live Dashboard]}}
-          {Estimates how proximity to data centers moves Chicago home prices, using spatial hedonic models over georeferenced infrastructure and property transaction records. Delivered as an interactive dashboard so non-technical stakeholders can explore the price gradient themselves.}
+          {An exploratory tool for examining how data center proximity relates to Chicago housing prices, joining georeferenced infrastructure with property transaction records in an interactive dashboard. Descriptive by design: it surfaces and maps the association for users to interrogate themselves rather than asserting a causal effect. Course project.}
 
 %── TECHNICAL SKILLS ─────────────────────────────────────────────────────────
 \section{Technical Skills}
 
 \skillrow{Methods}{Causal Inference (DiD, Staggered DiD, RDD, IV), Panel \& Spatial Econometrics, Program Evaluation, Predictive Modeling, Gradient Boosting, Remote Sensing}
-\skillrow{Programming \& Data}{Python, R, SQL, PostgreSQL; large-scale data pipelines, OCR \& archival extraction, geospatial workflows}
+\skillrow{Programming \& Data}{Python, R, SQL, PostgreSQL, Stata; large-scale data pipelines, OCR \& archival extraction, geospatial workflows}
 \skillrow{Tools}{QGIS, ArcGIS, Git, LaTeX, Excel, Streamlit, Shiny}
 \skillrow{Domain}{Property tax \& valuation, zoning \& land use, housing \& infrastructure policy, utility regulation, regulatory \& compliance analysis}
 \skillrow{Languages}{Portuguese (Native), English (Fluent — TOEFL 112/120), Spanish (Conversational), German (Basic)}

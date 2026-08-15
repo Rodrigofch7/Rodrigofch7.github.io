@@ -243,7 +243,7 @@
       <div>
         <p class="tl-role">Data Science &amp; Research Intern, DECDI (Formerly DIME)</p>
         <p class="tl-org">World Bank — Washington, DC</p>
-        <p class="tl-desc">Extracted urban development indicators from satellite imagery to evaluate how a dedicated Bus Rapid Transit line reshaped urbanization patterns in Dakar, Senegal. Separately, built statistical tests on Mumbai property tax and housing data to detect bunching anomalies indicative of assessment manipulation, the kind of large-dataset forensic analysis used to surface irregularities in valuation and compliance.</p>
+        <p class="tl-desc">Extracted urban development indicators from satellite imagery to measure how a dedicated Bus Rapid Transit line reshaped urbanization patterns in Dakar, Senegal. Separately, reconstructed four decades of Mumbai property tax policy and tested assessment records for bunching at policy thresholds, alongside an analysis of how the market for additional floor area splits across regulatory instruments (TDR, Premium FSI, Fungible FSI). Findings confidential to the World Bank.</p>
       </div>
     </div>
 
@@ -252,7 +252,7 @@
       <div>
         <p class="tl-role">Graduate Research Assistant</p>
         <p class="tl-org"><a href="https://miurban.uchicago.edu/" target="_blank" rel="noopener">Mansueto Institute for Urban Innovation, UChicago</a></p>
-        <p class="tl-desc">Digitized over a century of archival records using OCR, then merged the extracted data with historical census records to build novel datasets tracing the spatial distribution of industry across Chicago from the early to mid-20th century.</p>
+        <p class="tl-desc">Built an end-to-end digitization pipeline — segmentation, OCR, structured extraction — for century-old cloth-bound fire insurance registers, pulling thousands of firm addresses from hundreds of pages. Linked them to three historical censuses by street and used NLP on firm names to classify establishments across hundreds of industries, producing a dataset of industrial location in 20th-century Chicago that did not previously exist.</p>
       </div>
     </div>
 
@@ -305,16 +305,16 @@
     <h2>Selected projects</h2>
 
     <div class="proj-card">
-      <p class="proj-title">NYC Property Tax Assessment</p>
+      <p class="proj-title">NYC Property Tax: A Horizontal-Equity Audit</p>
       <p class="proj-stack">Python · LightGBM · scikit-learn</p>
-      <p class="proj-desc">An end-to-end ML pipeline classifying all 1.1M NYC properties (FY2015–2027) as over-, under-, or fairly valued, using a novel 6-level peer-group labeling methodology and 138 engineered features spanning assessment trends, YoY acceleration, and ZIP/building-class aggregates.</p>
+      <p class="proj-desc">A horizontal-equity audit of New York's assessment roll: do comparable properties carry comparable tax burdens? Benchmarking all 1.1M properties against their peer-group median assessed value per square foot found roughly 43% sitting more than 15% away from their peers. Within a single peer group of 1940s Queens two-family homes worth about $750k, assessments ranged from $12.09 to $45.88 per square foot — a near-fourfold gap in effective tax rate produced by purchase date under NYC's Class 1 assessment cap, not by any difference in the houses.</p>
       <video class="proj-media" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the NYC property tax assessment dashboard">
         <source src="assets/video_nyc_property_taxes.mp4" type="video/mp4">
       </video>
       <div class="proj-stats">
-        <div><span class="stat-num-sm">1.1M</span><span class="stat-label-sm">Properties</span></div>
-        <div><span class="stat-num-sm">87.6%</span><span class="stat-label-sm">Accuracy</span></div>
-        <div><span class="stat-num-sm">0.867</span><span class="stat-label-sm">F1-Macro</span></div>
+        <div><span class="stat-num-sm">1.1M</span><span class="stat-label-sm">Properties Audited</span></div>
+        <div><span class="stat-num-sm">43%</span><span class="stat-label-sm">Off Peer Median</span></div>
+        <div><span class="stat-num-sm">4×</span><span class="stat-label-sm">Tax Gap, Same Block</span></div>
         <div><span class="stat-num-sm">138</span><span class="stat-label-sm">Features</span></div>
       </div>
       <div class="proj-links">
@@ -326,7 +326,7 @@
     <div class="proj-card">
       <p class="proj-title">Data Centers Next Door</p>
       <p class="proj-stack">R · Shiny · Spatial Econometrics</p>
-      <p class="proj-desc">A spatial hedonic price analysis of how proximity to data center infrastructure affects Chicago housing markets, integrating georeferenced infrastructure and transaction data into an interactive dashboard exploring the relationship between cloud computing buildout and local housing costs.</p>
+      <p class="proj-desc">An exploratory tool for examining how data center proximity relates to Chicago housing prices, joining georeferenced infrastructure with transaction records in an interactive dashboard. Descriptive by design: it surfaces and maps the association for users to interrogate themselves rather than asserting a causal effect.</p>
       <video class="proj-media" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Data Centers Next Door dashboard">
         <source src="assets/video_data_centers.mp4" type="video/mp4">
       </video>
