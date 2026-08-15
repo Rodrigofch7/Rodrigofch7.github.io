@@ -5,3 +5,8 @@
 *.fdb_latexmk
 *.synctex.gz
 cv.pdf
+
+# Targeted variants stay private — only general/ is published.
+consulting/
+research/
+analytics/
