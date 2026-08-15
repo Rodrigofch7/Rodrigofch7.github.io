@@ -204,9 +204,10 @@
   .proj-title{font-size:1.2rem; font-weight:700; margin:0 0 6px; color:var(--text);}
   .proj-stack{font-size:12px; color:var(--text-mute); margin:0 0 14px; font-weight:600; letter-spacing:0.03em; text-transform:uppercase;}
   .proj-desc{font-size:14.5px; margin:0 0 16px;}
-  .proj-stats{display:flex; gap:24px; flex-wrap:wrap; margin:0 0 18px; padding:16px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
-  .stat-num-sm{font-size:1.4rem; font-weight:800; color:var(--maroon-bright); display:block; line-height:1;}
-  .stat-label-sm{font-size:11px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.03em; font-weight:600;}
+  .proj-points{margin:0 0 18px; padding:0 0 0 20px; list-style:none;}
+  .proj-points li{position:relative; font-size:14.5px; color:var(--text-soft); line-height:1.6; margin:0 0 10px;}
+  .proj-points li:last-child{margin-bottom:0;}
+  .proj-points li::before{content:""; position:absolute; left:-20px; top:9px; width:6px; height:6px; border-radius:50%; background:var(--maroon-bright);}
   .proj-links{display:flex; gap:18px; font-size:13.5px; font-weight:600; flex-wrap:wrap;}
 
   .pub-item{padding:20px 0; border-top:1px solid var(--border);}
@@ -424,19 +425,18 @@
     <div class="proj-card">
       <p class="proj-title">NYC Property Tax: A Horizontal-Equity Audit</p>
       <p class="proj-stack">Python · LightGBM · scikit-learn</p>
-      <p class="proj-desc">A horizontal-equity audit of New York's assessment roll: do comparable properties carry comparable tax burdens? Benchmarking all 1.1M properties against their peer-group median assessed value per square foot found roughly 43% sitting more than 15% away from their peers. Within a single peer group of 1940s Queens two-family homes worth about $750k, assessments ranged from $12.09 to $45.88 per square foot — a near-fourfold gap in effective tax rate produced by purchase date under NYC's Class 1 assessment cap, not by any difference in the houses.</p>
+      <p class="proj-desc">Does New York tax comparable properties comparably?</p>
+      <ul class="proj-points">
+        <li>Benchmarks all 1.1M properties against their own peer group — borough, building class, tax class, year built, size and value band — rather than a citywide average, with a five-level fallback so rare building types still get a label.</li>
+        <li>On that definition, roughly 43% sit more than 15% from their peer-group median. The peer definition and the 15% threshold are both ours, so this measures dispersion within comparable groups rather than proven misassessment.</li>
+        <li>On a three-person team I owned the labelling methodology, the 138-feature leak-free pipeline and the LightGBM model, delivered as a dashboard for audit triage.</li>
+      </ul>
       <div class="media-wrap">
       <video class="proj-media" poster="assets/poster_nyc.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the NYC property tax assessment dashboard">
         <source src="assets/video_nyc_property_taxes.mp4" type="video/mp4">
       </video>
       <button type="button" class="media-toggle" aria-pressed="true" data-label="NYC property tax dashboard">Pause</button>
     </div>
-      <div class="proj-stats">
-        <div><span class="stat-num-sm">1.1M</span><span class="stat-label-sm">Properties Audited</span></div>
-        <div><span class="stat-num-sm">43%</span><span class="stat-label-sm">Off Peer Median</span></div>
-        <div><span class="stat-num-sm">4×</span><span class="stat-label-sm">Tax Gap, Same Block</span></div>
-        <div><span class="stat-num-sm">138</span><span class="stat-label-sm">Features</span></div>
-      </div>
       <div class="proj-links">
         <a href="https://github.com/Rodrigofch7/nyc_property_taxes_local" target="_blank" rel="noopener">View on GitHub →</a>
         <a href="https://nycpropertytaxes.streamlit.app/" target="_blank" rel="noopener">Live dashboard →</a>
@@ -446,7 +446,12 @@
     <div class="proj-card">
       <p class="proj-title">Data Centers Next Door</p>
       <p class="proj-stack">R · Shiny · Spatial Econometrics</p>
-      <p class="proj-desc">An exploratory tool for examining how data center proximity relates to Chicago housing and household costs (2000–2025), linking scraped facility records and permit-derived opening dates to ZIP-level Zillow prices and ACS utility-cost data. Descriptive by design: it surfaces and maps the association rather than asserting a causal effect. On a four-person team I scraped and geocoded the facility data and built the dashboard.</p>
+      <p class="proj-desc">How does data centre buildout relate to what it costs to live nearby?</p>
+      <ul class="proj-points">
+        <li>Links 45 confirmed Chicago-area data centres — curated from 124 scraped listings, then geocoded — to ZIP-level Zillow home values and ACS household and utility cost data across 660 metro ZIP codes.</li>
+        <li>Approximates each facility's start date from air-permit filings spanning 2000–2024, then compares neighbourhood costs before and after that date as a composite index, ranked by decile with a z-score alternative.</li>
+        <li>Descriptive by design: it maps associations rather than claiming an effect. On a four-person team I did the scraping, geocoding and the Shiny dashboard.</li>
+      </ul>
       <div class="media-wrap">
       <video class="proj-media" poster="assets/poster_datacenters.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Data Centers Next Door dashboard">
         <source src="assets/video_data_centers.mp4" type="video/mp4">
@@ -547,13 +552,14 @@
         btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + btn.getAttribute('data-label'));
       };
       if (reduce) { video.autoplay = false; video.pause(); }
+      else if (video.paused) { btn.textContent = 'Pause'; btn.setAttribute('aria-pressed','true'); }
       btn.addEventListener('click', function(){
         if (video.paused) { video.play(); } else { video.pause(); }
         sync();
       });
       video.addEventListener('play', sync);
       video.addEventListener('pause', sync);
-      sync();
+      if (reduce) sync();
     });
   })();
 
