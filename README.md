@@ -27,9 +27,18 @@ Single-page personal portfolio built with plain HTML/CSS/JS — no framework, no
   ffmpeg -i input.jpeg -vf "scale=480:480:flags=lanczos" -q:v 3 assets/rodrigo-headshot.jpg
   ```
 
+## CV
+LaTeX source lives in `cv/cv.tex` and compiles with `pdflatex` (needs the `charter`, `titlesec`, `enumitem`, `tabularx` packages — all in TeX Live). To rebuild after editing:
+```bash
+cd cv && pdflatex -interaction=nonstopmode cv.tex   # run twice: hyperref needs a second pass
+cp cv.pdf ../assets/Rodrigo_Franca_Chaves_CV.pdf
+```
+The site's "Download CV" button points at `assets/Rodrigo_Franca_Chaves_CV.pdf`, so the copy step is what actually publishes a new version.
+
 ## Structure
 - `index.html` — everything (markup, styles, script) in one file
-- `assets/` — video demos referenced by the projects section
+- `assets/` — video demos, publication thumbnails, social card, and the published CV PDF
+- `cv/` — LaTeX source for the CV (build artifacts gitignored)
 
 ## Notes
 - No dependencies to install — open `index.html` directly or serve statically

@@ -1,0 +1,199 @@
+%──────────────────────────────────────────────────────────────────────────────
+%  Rodrigo França Chaves — Curriculum Vitae
+%  Compiler: pdflatex
+%──────────────────────────────────────────────────────────────────────────────
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{charter}
+
+\usepackage[
+  top=0.5in, bottom=0.5in,
+  left=0.65in,  right=0.65in
+]{geometry}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{linkblue}{HTML}{1155CC}
+
+\usepackage[
+  colorlinks=true,
+  urlcolor=linkblue,
+  linkcolor=linkblue
+]{hyperref}
+
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin=1.4em,
+  itemsep=0pt,
+  parsep=0pt,
+  topsep=1pt,
+  label={\small$\bullet$}
+}
+
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{array}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}
+  {\normalsize\bfseries\uppercase}
+  {}{0pt}{}
+  [\vspace{0.5pt}\titlerule\vspace{1.5pt}]
+
+\titlespacing*{\section}{0pt}{5pt}{2.5pt}
+
+\newcommand{\cventry}[4]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textit{\small #4} \\[0pt]
+    \textit{\small #2, #3} & \\
+  \end{tabularx}%
+  \vspace{0pt}%
+}
+
+\newcommand{\cvedu}[4]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textit{\small #4} \\[0pt]
+    \textit{\small #2, #3} & \\
+  \end{tabularx}%
+  \vspace{0pt}%
+}
+
+\newcommand{\cvpub}[3]{%
+  \noindent\textbf{#1}\\[0.5pt]
+  {\small\textit{#2}}\\[0.5pt]
+  {\small #3}%
+  \par\vspace{4pt}%
+}
+
+\newcommand{\cvproject}[4]{%
+  \noindent\textbf{#1} \enspace{\small\texttt{#2}}\\[0.5pt]
+  {\small #4 \enspace #3}%
+  \par\vspace{4pt}%
+}
+
+\newcommand{\skillrow}[2]{%
+  \noindent\textbf{#1:} \enspace #2\par\vspace{1.5pt}%
+}
+
+\begin{document}
+
+%── HEADER ───────────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Data Scientist \& Economic Analyst}\\[3pt]
+  {\large Rodrigo França Chaves}\\[3pt]
+  {\small
+    Chicago, IL, USA \enspace$\cdot$\enspace
+    \href{mailto:rodrigofrancachaves99@gmail.com}{rodrigofrancachaves99@gmail.com} \enspace$\cdot$\enspace
+    \href{mailto:rchaves@uchicago.edu}{rchaves@uchicago.edu} \enspace$\cdot$\enspace
+    +1 312 217 5526
+  }\\[1.5pt]
+  {\small
+    \href{https://rodrigofch7.github.io}{Website} \enspace$\cdot$\enspace
+    \href{https://scholar.google.com.br/citations?user=6D65dqUAAAAJ}{Google Scholar} \enspace$\cdot$\enspace
+    \href{https://www.linkedin.com/in/rodrigofrancac}{LinkedIn} \enspace$\cdot$\enspace
+    \href{https://github.com/Rodrigofch7}{GitHub} \enspace$\cdot$\enspace
+    Brazilian Citizen — F1 Visa (STEM OPT Eligible)
+  }
+\end{center}
+
+\vspace{1pt}
+{\rule{\linewidth}{0.8pt}}
+\vspace{3pt}
+
+%── SUMMARY ───────────────────────────────────────────────────────────────────
+{\small
+Quantitative analyst who turns large administrative datasets — property assessments, tax records, transactions, satellite imagery — into evidence that holds up under scrutiny. Combines causal inference with machine learning to detect valuation anomalies, quantify the effects of regulation, and explain the result to people who did not build the model. Peer-reviewed work in regulatory economics; applied experience across housing, tax, transit, and public-policy problems in four countries. Seeking full-time roles in economic consulting, applied research, and data-driven analytics.
+\par}
+
+%── EDUCATION ─────────────────────────────────────────────────────────────────
+\section{Education}
+
+\cvedu{M.S. in Computational Analysis and Public Policy}{The University of Chicago}{Chicago, IL}{Sep 2025 – Jun 2027}
+{\small Specializations: Markets \& Regulation; Health Policy \\
+Coursework: Machine Learning for Public Policy, Applied Econometrics, Data Engineering, Program Evaluation, Public Finance, Statistical Computing}
+
+\vspace{3.5pt}
+
+\cvedu{Postgraduate Degree in Data Science (Pós-Graduação)}{Insper – Institute of Research and Education}{São Paulo, Brazil}{Sep 2022 – Apr 2024}
+{\small Coursework: Statistical Inference, Econometrics, Machine Learning, Cloud Computing, Predictive Modeling}
+
+\vspace{3.5pt}
+
+\cvedu{B.A. in International Relations}{Ibmec – Brazilian Institute of Capital Markets}{Belo Horizonte, Brazil}{Feb 2018 – Jun 2022}
+{\small Coursework: Political Economy, International Trade, Macroeconomics, Quantitative Methods, Public Policy, Political Science}
+
+%── PUBLICATIONS & WORKING PAPERS ────────────────────────────────────────────
+\section{Publications \& Working Papers}
+
+\cvpub{\href{https://www.sciencedirect.com/science/article/abs/pii/S0957178725000189}{Private Ownership of Water and Wastewater Systems: Assessing Health Impacts}}
+      {Utilities Policy — Peer-Reviewed Journal Article}
+      {Estimates the health consequences of transferring water and sanitation systems to private operators in Brazil (1998–2021), using panel econometrics and difference-in-differences on two decades of municipal administrative data — evidence directly relevant to concession and rate-setting debates.}
+
+\cvpub{\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5441274}{Resistance to Doing Right: Rising Cost of Misconduct from Body-Worn Camera Adoption}}
+      {Working Paper — In Progress}
+      {Identifies the unintended effects of body-worn camera adoption on police misconduct and de-policing in São Paulo, exploiting a staggered rollout via staggered difference-in-differences on administrative crime microdata.}
+
+%── WORK EXPERIENCE ──────────────────────────────────────────────────────────
+\section{Work Experience}
+
+\cventry{Data Science \& Research Intern — DECDI (Formerly DIME)}{World Bank}{Washington, DC}{Summer 2026}
+\begin{itemize}
+  \item Analyzed Mumbai property tax and housing records for bunching at assessment thresholds — a statistical signature of valuation manipulation — isolating where declared values cluster in ways market fundamentals do not explain.
+  \item Measured how a dedicated Bus Rapid Transit corridor reshaped urbanization in Dakar, Senegal, deriving built-environment indicators from satellite imagery where no reliable ground-level administrative data existed.
+\end{itemize}
+
+\vspace{3pt}
+
+\cventry{Graduate Research Assistant}{Mansueto Institute for Urban Innovation, UChicago}{Chicago, IL}{Mar 2026 – Present}
+\begin{itemize}
+  \item Digitized over a century of archival records using OCR and linked them to historical census data, building a novel dataset that traces the spatial distribution of industry across Chicago from the early to mid-20th century.
+  \item Built scalable pipelines to clean, georeference, and structure unstructured archival material into analysis-ready panels, making previously unusable sources available for spatial econometric research on urban development and housing markets.
+\end{itemize}
+
+\vspace{3pt}
+
+\cventry{Research Assistant}{Insper Cities Lab (Arq.Futuro)}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
+\begin{itemize}
+  \item Designed and executed quasi-experimental evaluations of public policy across Brazilian municipalities; work produced one peer-reviewed publication (\textit{Utilities Policy}) and one working paper in progress.
+  \item Assembled and reconciled administrative microdata from multiple government sources, resolving inconsistent identifiers and coverage gaps to make municipal panels comparable across two decades.
+  \item Mentored undergraduate researchers on research design, econometric methodology, and academic writing; coordinated cross-functional teams under firm publication deadlines.
+\end{itemize}
+
+\vspace{3pt}
+
+\cventry{Teaching Assistant — GIS, Econometrics \& R}{Insper}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
+\begin{itemize}
+  \item Taught applied econometrics, GIS, and R programming to 50+ undergraduate and graduate students; supervised an intensive field course requiring direct coordination with municipal officials.
+  \item Developed hands-on exercises that translate causal inference and spatial regression into results students can reproduce, interpret, and defend.
+\end{itemize}
+
+%── PROJECTS ─────────────────────────────────────────────────────────────────
+\section{Projects}
+
+\cvproject{NYC Property Tax Assessment}
+          {Python · LightGBM · scikit-learn}
+          {\href{https://github.com/Rodrigofch7/nyc_property_taxes_local}{[GitHub]} \enspace \href{https://nycpropertytaxes.streamlit.app/}{[Live Dashboard]}}
+          {End-to-end ML pipeline classifying all 1.1M NYC properties (FY2015–2027) as over-, under-, or fairly valued, so a review team can target the properties most likely to be misassessed instead of auditing at random. Designed a novel 6-level peer-group labeling methodology and engineered 138 features (assessment trends, YoY acceleration, ZIP and building-class aggregates, OLS projections); LightGBM reached 87.6\% accuracy and 0.867 F1-macro against a 57\% majority-class baseline. Runs reproducibly at full scale via memory-safe chunked ingestion and checkpoint-resumable tuning.}
+
+\cvproject{Data Centers Next Door: Cloud Infrastructure and Housing Costs}
+          {R · Shiny · Spatial Econometrics}
+          {\href{https://github.com/Rodrigofch7/data-centers-urban-effects}{[GitHub]} \enspace \href{https://rodrigofrancac.shinyapps.io/project-datacenter-urban-effects/}{[Live Dashboard]}}
+          {Estimates how proximity to data centers moves Chicago home prices, using spatial hedonic models over georeferenced infrastructure and property transaction records. Delivered as an interactive dashboard so non-technical stakeholders can explore the price gradient themselves.}
+
+%── TECHNICAL SKILLS ─────────────────────────────────────────────────────────
+\section{Technical Skills}
+
+\skillrow{Methods}{Causal Inference (DiD, Staggered DiD, RDD, IV), Panel \& Spatial Econometrics, Program Evaluation, Predictive Modeling, Gradient Boosting, Remote Sensing}
+\skillrow{Programming \& Data}{Python, R, SQL, PostgreSQL; large-scale data pipelines, OCR \& archival extraction, geospatial workflows}
+\skillrow{Tools}{QGIS, ArcGIS, Git, LaTeX, Excel, Streamlit, Shiny}
+\skillrow{Domain}{Property tax \& valuation, zoning \& land use, housing \& infrastructure policy, utility regulation, regulatory \& compliance analysis}
+\skillrow{Languages}{Portuguese (Native), English (Fluent — TOEFL 112/120), Spanish (Conversational), German (Basic)}
+
+\end{document}
