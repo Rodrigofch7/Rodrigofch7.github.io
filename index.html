@@ -49,6 +49,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  // Runs before paint: applies a saved theme choice so the page never flashes the wrong one.
+  (function(){ try{ var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  }catch(e){} })();
+</script>
 <style>
   :root{
     --bg:#14110F;
@@ -132,6 +138,19 @@
   .nav-links{display:flex; gap:24px; flex-wrap:wrap; list-style:none; margin:0; padding:0;}
   .nav-links a{font-size:14px; font-weight:500; color:var(--text-soft); text-decoration:none;}
   .nav-links a:hover{color:var(--maroon-bright);}
+  .theme-toggle{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:34px; height:34px; padding:0;
+    border:1px solid var(--border); border-radius:999px;
+    background:transparent; color:var(--text-soft);
+    cursor:pointer; flex-shrink:0;
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .theme-toggle:hover{border-color:var(--maroon-bright); color:var(--maroon-bright); background:var(--maroon-tint);}
+  .theme-toggle .icon-sun{display:none;}
+  .theme-toggle .icon-moon{display:block;}
+  .theme-toggle[data-shows="sun"] .icon-sun{display:block;}
+  .theme-toggle[data-shows="sun"] .icon-moon{display:none;}
 
   header.hero{padding:88px 0 56px;}
   .hero-top{display:grid; grid-template-columns:1fr 168px; gap:36px; align-items:start;}
@@ -198,6 +217,16 @@
   .tl-role{font-weight:700; font-size:15.5px; color:var(--text); margin:0 0 2px;}
   .tl-org{font-size:14px; color:var(--maroon-bright); margin:0 0 8px; font-weight:600;}
   .tl-desc{font-size:14.5px; color:var(--text-soft); margin:0;}
+  .tl-logo{
+    height:21px; width:auto; max-width:130px;
+    display:block; margin:0 0 9px;
+    /* flatten each mark to a silhouette so heterogeneous sources read as one set */
+    filter:brightness(0) invert(1) opacity(0.72);
+  }
+  :root[data-theme="light"] .tl-logo{filter:brightness(0) opacity(0.62);}
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]) .tl-logo{filter:brightness(0) opacity(0.62);}
+  }
 
   .proj-card{border:1px solid var(--border); border-radius:10px; padding:26px; margin-bottom:20px; background:var(--card);}
   .proj-media{width:100%; display:block; border-radius:8px; border:1px solid var(--border); margin:0 0 16px; background:var(--media-bg);}
@@ -293,6 +322,10 @@
       <li><a href="#publications">Research</a></li>
       <li><a href="#projects">Projects</a></li>
     </ul>
+    <button type="button" class="theme-toggle" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M20.7 14.6A8.6 8.6 0 019.4 3.3a8.6 8.6 0 1011.3 11.3z"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -359,6 +392,7 @@
       <div class="tl-date">Summer 2026</div>
       <div>
         <p class="tl-role">Data Science &amp; Research Intern, DECDI (Formerly DIME)</p>
+        <img class="tl-logo" src="assets/logo-worldbank.svg" alt="World Bank" loading="lazy">
         <p class="tl-org">World Bank — Washington, DC</p>
         <p class="tl-desc">Extracted urban development indicators from satellite imagery to measure how a dedicated Bus Rapid Transit line reshaped urbanization patterns in Dakar, Senegal. Found and corrected a building-detection threshold set at nearly double the value the source paper optimizes for Africa — a bias that varied by neighbourhood type and so would not have differenced out of the design. Separately, reconstructed four decades of Mumbai property tax policy and tested millions of assessment records for bunching at policy thresholds, alongside an analysis of how the market for additional floor area splits across regulatory instruments (TDR, Premium FSI, Fungible FSI). Findings confidential to the World Bank.</p>
       </div>
@@ -368,6 +402,7 @@
       <div class="tl-date">Mar – Jun 2026<br>Resuming Sep 2026</div>
       <div>
         <p class="tl-role">Graduate Research Assistant</p>
+        <img class="tl-logo" src="assets/logo-uchicago.svg" alt="University of Chicago" loading="lazy">
         <p class="tl-org"><a href="https://miurban.uchicago.edu/" target="_blank" rel="noopener">Mansueto Institute for Urban Innovation, UChicago</a></p>
         <p class="tl-desc">Built an end-to-end digitization pipeline — segmentation, OCR, structured extraction — for century-old cloth-bound fire insurance registers, pulling thousands of firm addresses from hundreds of pages. Linked them to three historical censuses by street and used NLP on firm names to classify establishments across hundreds of industries, producing a dataset of industrial location in 20th-century Chicago that did not previously exist.</p>
       </div>
@@ -377,6 +412,7 @@
       <div class="tl-date">2023 — 2025</div>
       <div>
         <p class="tl-role">Research Assistant, Insper Cities Lab</p>
+        <img class="tl-logo" src="assets/logo-insper.png" alt="Insper" loading="lazy">
         <p class="tl-org"><a href="https://arqfuturo.com.br/sobre" target="_blank" rel="noopener">Arq.Futuro — São Paulo, Brazil</a></p>
         <p class="tl-desc">Two years of quasi-experimental policy evaluation across utilities, crime, property taxation, regulation, and real estate markets, working with municipal panels running to millions of records on home prices, tax assessments, and disease incidence. First-authored the resulting <em>Utilities Policy</em> article and co-authored an in-progress working paper on police body cameras. Mentored undergraduates on research design and methodology.</p>
       </div>
@@ -386,6 +422,7 @@
       <div class="tl-date">2023 — 2025</div>
       <div>
         <p class="tl-role">Teaching Assistant — GIS, Econometrics &amp; R</p>
+        <img class="tl-logo" src="assets/logo-insper.png" alt="Insper" loading="lazy">
         <p class="tl-org"><a href="https://www.insper.edu.br/en/home" target="_blank" rel="noopener">Insper, São Paulo</a></p>
         <p class="tl-desc">Taught GIS and R to 50+ students, applying spatial analysis to São Paulo’s real estate market, transit infrastructure, population density, and urban models of settlement. Advised undergraduate theses through Brazil’s required capstone; one placed second in its cohort. Coordinated an intensive field course with municipal stakeholders.</p>
       </div>
@@ -520,6 +557,37 @@
 </footer>
 
 <script>
+  // Theme toggle. Overrides the OS setting and remembers the choice.
+  (function(){
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var systemLight = window.matchMedia('(prefers-color-scheme: light)');
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch(e){}
+
+    function effective(){
+      var attr = root.getAttribute('data-theme');
+      if (attr === 'light' || attr === 'dark') return attr;
+      return systemLight.matches ? 'light' : 'dark';
+    }
+    function paint(){
+      var now = effective();
+      // Show the icon for the theme you would switch TO.
+      btn.setAttribute('data-shows', now === 'light' ? 'moon' : 'sun');
+      btn.setAttribute('aria-label', now === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+    }
+    btn.addEventListener('click', function(){
+      var next = effective() === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch(e){}
+      paint();
+    });
+    // Follow the OS only while the visitor has not chosen for themselves.
+    systemLight.addEventListener('change', function(){ if (!stored) paint(); });
+    paint();
+  })();
+
   // Highlight the nav link for the section currently in view.
   (function(){
     var links = {};
