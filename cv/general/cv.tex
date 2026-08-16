@@ -13,29 +13,29 @@
 
 \cventry{Data Science and Research Intern, DECDI (formerly DIME)}{World Bank}{Washington, DC}{Jun – Aug 2026}
 \begin{itemize}
-  \item Measured how construction in Dakar responded to a new bus rapid transit corridor, comparing 100\,m grid cells near the route against cells further out using Google Open Buildings and GHSL satellite data. Because the line was announced in 2018 and only opened in 2024, the design captures how the city reacted in anticipation and during construction, not the effect of the line running.
-  \item Found that the project's building-detection threshold had been set at nearly twice the value its source paper recommends for Africa. The old setting discarded real buildings hardest in dense and informal areas, a bias that varies by neighbourhood and so would not have cancelled out of the comparison. Shipped the corrected pipeline with 200 tests and an interactive explorer for the team.
-  \item Built a single timeline of forty years of Mumbai property tax and land-use policy, then tested millions of assessment records for bunching at policy thresholds, the pattern that appears when declared values are being manipulated.
-  \item Measured which instruments developers actually use to buy extra floor area in Mumbai (TDR, Premium FSI, Fungible FSI) across two decades of transactions, and what market, regulatory, and political conditions drive that choice. \textit{(Findings confidential to the World Bank.)}
+  \item Measured how construction in Dakar responded to a new bus rapid transit corridor, using difference-in-differences across 100\,m grid cells built from Google Open Buildings and GHSL satellite data. Because the corridor was announced in 2018 and opened in 2024, the design identifies the anticipation and construction-phase response rather than the effect of operation.
+  \item Identified that the project's building-detection threshold had been set at nearly twice the value its source paper recommends for Africa. The setting discarded real structures most heavily in dense and informal areas, a bias that varies by neighbourhood and so does not difference out. Shipped the corrected pipeline with 200 tests and an interactive explorer.
+  \item Reconstructed four decades of Mumbai property tax and land-use policy into a single timeline, then tested millions of assessment records for bunching at policy thresholds, the signature of manipulated declared values.
+  \item Quantified how Mumbai's market for additional floor area divides across regulatory instruments (TDR, Premium FSI, Fungible FSI) over two decades of transactions, and which market, regulatory, and political conditions drive that choice. \textit{(Findings confidential to the World Bank.)}
 \end{itemize}
 
 \vspace{3pt}
 
 \cventry{Graduate Research Assistant}{Mansueto Institute for Urban Innovation, UChicago}{Chicago, IL}{Mar – Jun 2026 · Resuming Sep 2026}
 \begin{itemize}
-  \item Turned century-old fire insurance registers, cloth-bound books that no computer could read, into usable data. I built the whole pipeline: cutting the pages, running OCR, and cleaning the output into structured records.
-  \item Pulled thousands of company addresses out of hundreds of register pages, matched them to three historical censuses by street name, and used NLP on the company names to sort establishments into hundreds of industries. The result is a picture of where industry sat in 20th-century Chicago that nobody had before.
-  \item Returning in September 2026 to write the method up as a paper, so other researchers working with archival records can reuse it.
+  \item Built a digitisation pipeline for century-old fire insurance registers, cloth-bound volumes that had never been machine-readable, covering page segmentation, OCR, and structured extraction.
+  \item Recovered thousands of firm addresses from hundreds of pages, matched them to three historical censuses by street, and classified establishments into hundreds of industries using natural language processing on firm names. The result is a record of industrial location in twentieth-century Chicago that did not previously exist.
+  \item Returning in September 2026 to write the method up as a paper documenting the pipeline for other researchers working with archival records.
 \end{itemize}
 
 \vspace{3pt}
 
 \cventry{Research Assistant}{Insper Cities Lab (Arq.Futuro)}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
 \begin{itemize}
-  \item Two years evaluating public policy in Brazil across water utilities, crime, property taxation, and real estate markets, using difference-in-differences, regression discontinuity, and spatial methods.
-  \item Built the underlying data: home prices, tax assessments, and disease rates, matched across municipalities and census tracts, and grouped into new geographic units through spatial clustering where no official boundary suited the question.
-  \item Reconciled administrative records from several government sources, resolving mismatched identifiers and gaps in coverage so the panels lined up across two decades. Without that step the privatisation analysis would not have been identifiable at all.
-  \item First author on the resulting \textit{Utilities Policy} article, second author on an in-progress working paper about police body cameras.
+  \item Two years of quasi-experimental policy evaluation across water utilities, crime, property taxation, and real estate markets in Brazil, using difference-in-differences, regression discontinuity, and spatial methods.
+  \item Constructed the underlying data: home prices, tax assessments, and disease rates matched across municipalities and census tracts, and grouped into new geographic units by spatial clustering where no official boundary suited the question.
+  \item Reconciled administrative records from several government sources, resolving mismatched identifiers and gaps in coverage so the panels aligned across two decades. Without that step the privatisation analysis would not have been identifiable.
+  \item First author on the resulting \textit{Utilities Policy} article and second author on an in-progress working paper on police body cameras.
   \item Mentored undergraduate researchers on research design, econometrics, and academic writing, and coordinated teams working to publication deadlines.
 \end{itemize}
 
@@ -43,9 +43,9 @@
 
 \cventry{Teaching Assistant: GIS, Econometrics and R}{Insper}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
 \begin{itemize}
-  \item Taught GIS and R to more than 50 students, using São Paulo as the case study: its housing market, its transit network, and the way both density and prices fall as you move away from the centre.
-  \item Advised undergraduate theses through Brazil's required capstone. One placed second in its cohort.
-  \item Ran an intensive field course that required working directly with city officials.
+  \item Taught GIS and R to more than 50 students, using São Paulo as the working case: its housing market, its transit network, and the way density and land values decline with distance from the centre.
+  \item Advised undergraduate theses through Brazil's required capstone; one placed second in its cohort.
+  \item Ran an intensive field course conducted with municipal officials.
 \end{itemize}
 
 
@@ -55,12 +55,12 @@
 \cvproject{NYC Property Tax: A Horizontal-Equity Audit}
           {Python · LightGBM · scikit-learn}
           {\href{https://github.com/Rodrigofch7/nyc_property_taxes_local}{[GitHub]} \enspace \href{https://nycpropertytaxes.streamlit.app/}{[Live Dashboard]}}
-          {Two houses that are alike should pay similar property tax. This project checks whether that holds in New York. Comparing every property against a citywide average is meaningless when a Manhattan co-op and a Queens two-family land in the same column, so each property is instead compared only against properties genuinely like it: same borough, building class, tax class, decade built, size, and price range, with a five-level fallback so rare building types still get a comparison group. On that basis roughly 43\% sit more than 15\% away from what their closest comparables pay. How much you find depends on how a comparable is defined, which was our choice, so the figure measures how spread out assessments are within similar groups rather than proving anyone was assessed wrongly. Narrowing the price bands from quintiles to ventiles cut the price spread inside a group from \$475k to \$48k, which cost a little accuracy and bought labels that actually mean something. Built on 138 leakage-free features and LightGBM, delivered as a dashboard for audit triage. I designed the comparison method, built the data pipeline, and trained the models; two collaborators contributed.}
+          {Horizontal equity requires that similar properties carry similar tax burdens. This project tests whether New York's assessment roll meets that standard. A citywide benchmark is uninformative when a Manhattan co-op and a Queens two-family fall into the same comparison, so each property is measured against a peer group defined by borough, building class, tax class, decade built, size, and value band, with a five-level fallback so that rare building types still receive a comparison group. On that definition roughly 43\% sit more than 15\% from their peer-group median; both the peer definition and the threshold are ours, so the figure measures dispersion within comparable groups rather than proven misassessment. Narrowing the value bands from quintiles to ventiles cut within-group price spread from \$475k to \$48k, trading a small accuracy loss for labels that carry meaning. Built on 138 leakage-free features and LightGBM, delivered as a dashboard for audit triage. I designed the peer-group methodology, built the data pipeline, and trained the models.}
 
 \cvproject{Data Centers Next Door: Cloud Infrastructure and Housing Costs}
           {R · Shiny · Spatial Econometrics}
           {\href{https://github.com/Rodrigofch7/data-centers-urban-effects}{[GitHub]} \enspace \href{https://rodrigofrancac.shinyapps.io/project-datacenter-urban-effects/}{[Live Dashboard]}}
-          {Data centres are going up fast around Chicago, and people living nearby want to know what that does to their bills and their home values. This project puts the question on a map. I scraped 124 listed facilities, confirmed 45 of them, geocoded them, and worked out roughly when each opened from air permit filings between 2000 and 2024. Those dates are lined up against ZIP-level Zillow home values and Census household and utility costs across 660 metro ZIP codes, so a user can see what moved before and after each opening. It shows patterns rather than causes: a facility opening near rising prices does not mean it caused them. Course project with four people; I did the scraping, the geocoding, and the Shiny dashboard.}
+          {Data centre construction around Chicago has accelerated, raising the question of what it does to nearby housing and household costs. I scraped 124 listed facilities, confirmed and geocoded 45, and dated each opening from air permit filings between 2000 and 2024. Those dates are matched against ZIP-level Zillow home values and Census household and utility costs across 660 metropolitan ZIP codes, so a user can examine what moved around each opening. The design is descriptive rather than causal: a facility opening near rising prices is not evidence that it caused them. On a four-person course project I did the scraping, geocoding, and Shiny dashboard.}
 
 
 %── TECHNICAL SKILLS ─────────────────────────────────────────────────────────
