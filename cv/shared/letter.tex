@@ -1,0 +1,28 @@
+% One-page letter / statement template. Matches the CV letterhead.
+\documentclass[11pt, letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{charter}
+\usepackage[top=0.55in, bottom=0.45in, left=0.8in, right=0.8in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{linkblue}{HTML}{1155CC}
+\usepackage[colorlinks=true, urlcolor=linkblue, linkcolor=linkblue]{hyperref}
+\usepackage{parskip}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{1.0}
+
+\newcommand{\letterhead}{%
+  \begin{center}
+    {\large\bfseries Rodrigo França Chaves}\\[2pt]
+    {\small
+      Chicago, IL \enspace$\cdot$\enspace
+      \href{mailto:rchaves@uchicago.edu}{rchaves@uchicago.edu} \enspace$\cdot$\enspace
+      +1 312 217 5526 \enspace$\cdot$\enspace
+      \href{https://rodrigofch7.github.io}{rodrigofch7.github.io}
+    }
+  \end{center}
+  \vspace{2pt}
+  {\rule{\linewidth}{0.8pt}}
+  \vspace{10pt}
+}

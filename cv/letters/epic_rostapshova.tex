@@ -1,0 +1,20 @@
+\input{../shared/letter}
+\begin{document}
+\letterhead
+\begin{center}{\bfseries\large Statement of Interest: Olga Rostapshova}\\[2pt]
+{\small Health and economic impacts of ML-based Clean Air Act inspection targeting}\end{center}
+\vspace{6pt}
+
+This project asks what happens downstream of an algorithm: not whether a model predicts violations well, but whether targeting inspections with it actually reduces emissions, mortality, and economic damage, and whether it does so without concentrating error in communities already overexposed. That combination of predictive modeling, health and economic impact estimation, and explicit equity assessment is the work I most want to be doing, and it maps closely onto what I have already built.
+
+I have constructed a predictive targeting system of this shape. For New York City's property tax roll I built a pipeline that classifies 1.1 million properties by how far their assessment sits from genuinely comparable peers, so that a review team can prioritize cases rather than audit at random. The engineering resembles what this project needs: ingestion of tab-delimited administrative files with no headers, read in chunks to stay inside memory, joined across six fiscal years on a constructed parcel key; 138 engineered features built to be leakage-free, including trend extrapolations fitted only on prior years; and gradient-boosted classification with checkpoint-resumable hyperparameter search so the whole thing re-runs end to end. I designed the labeling methodology, built the pipeline, and trained the models.
+
+The harder lesson from that project is the one most relevant here. Our first labels used citywide quintile bins, which grouped properties worth \$442,000 with properties worth \$917,000 and produced labels that were essentially noise. Moving to twenty ventile bins cut the typical within-group price spread from about \$475,000 to \$48,000 and lowered our F1 slightly, and we took that trade deliberately, because the model was now solving a harder and more honest problem. In an enforcement setting where predictions carry legal and health consequences, I would expect the analogous question, what counts as a comparable facility, to matter more than model choice.
+
+On the impact side, my first-authored article in \textit{Utilities Policy} estimates the health consequences of a regulatory change, using staggered difference-in-differences with propensity-matched controls across Brazilian municipalities from 1998 to 2021, with hospital admissions as the outcome and diseases unrelated to sanitation as a falsification check. Linking a regulatory intervention to morbidity through administrative health records is precisely the chain this project needs for its mortality and damages estimates, and I have done it once already, end to end.
+
+I am also comfortable in the spatial layer that connects facilities to exposed populations. At the World Bank I built and validated gridded panels from satellite rasters, and there I found that a detection threshold inherited from a prior specification was discarding real structures hardest in dense and informal areas, a bias that varied by neighborhood and so would not difference out. Equity assessment in this project will depend on exactly that kind of scrutiny of the exposure data.
+
+I work in Python, R, and Stata, with Git and reproducible workflows, which matches the stated requirements. I would contribute most on pipeline construction, feature engineering, and the emission-reduction estimation that feeds the health and damage calculations, and I would be glad to be held to producing tables, figures, and written results that a partner agency can actually use.
+
+\end{document}
