@@ -13,6 +13,5 @@ for v in "${VARIANTS[@]}"; do
   echo "built $v/cv.pdf ($(pdfinfo "$v/cv.pdf" | awk '/Pages/{print $2}') pages)"
 done
 
-# Only the general variant is published to the public site.
-cp general/cv.pdf ../assets/Rodrigo_Franca_Chaves_CV.pdf
-echo "published general -> assets/Rodrigo_Franca_Chaves_CV.pdf"
+# Nothing is published to the site: the CV is not hosted publicly.
+echo "all variants built locally; none published"
