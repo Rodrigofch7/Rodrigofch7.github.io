@@ -2,7 +2,7 @@
 # Builds every CV variant. The general one is what the website publishes.
 set -euo pipefail
 cd "$(dirname "$0")"
-VARIANTS=(general consulting research analytics antitrust analysisgroup epic brattle bcgx)
+VARIANTS=(general consulting research analytics antitrust analysisgroup epic brattle bcgx anthropic)
 
 for v in "${VARIANTS[@]}"; do
   [ -d "$v" ] || { echo "skipping $v (not present)"; continue; }
