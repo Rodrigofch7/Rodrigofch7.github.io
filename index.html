@@ -71,6 +71,7 @@
     --success:#5BBF73;
     --success-tint:rgba(91,191,115,0.10);
     --media-bg:#000;
+    --portrait-bg:radial-gradient(circle at 50% 28%, #3A2B2C 0%, #1C1815 72%);
     --max-w: 760px;
   }
 
@@ -92,6 +93,7 @@
       --success:#2E7D4F;
       --success-tint:rgba(46,125,79,0.10);
       --media-bg:#E8E2D9;
+      --portrait-bg:radial-gradient(circle at 50% 28%, #FFFFFF 0%, #EFE6E2 78%);
     }
   }
   :root[data-theme="light"]{
@@ -109,6 +111,7 @@
     --success:#2E7D4F;
     --success-tint:rgba(46,125,79,0.10);
     --media-bg:#E8E2D9;
+    --portrait-bg:radial-gradient(circle at 50% 28%, #FFFFFF 0%, #EFE6E2 78%);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -159,7 +162,7 @@
     border-radius:50%;
     object-fit:cover;
     display:block;
-    background:var(--bg-soft);   /* the cutout is transparent; this is the circle behind it */
+    background:var(--portrait-bg);  /* the cutout is transparent; this is the circle behind it */
     border:1px solid var(--border);
     box-shadow:0 0 0 4px var(--bg-soft);
   }
