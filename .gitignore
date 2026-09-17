@@ -7,3 +7,6 @@ jobs/
 
 # PhD program intake and triage: private.
 phd/
+
+# Local agent skills (third-party licenses vary). Never commit.
+.claude/
