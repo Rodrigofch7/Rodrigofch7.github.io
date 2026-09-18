@@ -2,7 +2,7 @@
 # Builds every CV variant. The general one is what the website publishes.
 set -euo pipefail
 cd "$(dirname "$0")"
-VARIANTS=(general consulting research analytics antitrust analysisgroup epic brattle bcgx anthropic keystone coherent wbg nera aurora wharton kelley predoc hra deloitte pa wsp)
+VARIANTS=(general consulting research analytics antitrust analysisgroup epic brattle bcgx anthropic keystone coherent wbg nera aurora wharton kelley predoc hra deloitte pa wsp e3 usbank ganongnoel)
 
 for v in "${VARIANTS[@]}"; do
   [ -d "$v" ] || { echo "skipping $v (not present)"; continue; }
@@ -12,6 +12,9 @@ for v in "${VARIANTS[@]}"; do
   )
   echo "built $v/cv.pdf ($(pdfinfo "$v/cv.pdf" | awk '/Pages/{print $2}') pages)"
 done
+
+# Quality gate: nothing gets published if any document fails.
+python3 check.py || { echo "QA failed: fix the documents above before publishing"; exit 1; }
 
 # Only the general variant is published to the public site.
 cp general/cv.pdf ../assets/Rodrigo_Franca_Chaves_CV.pdf
