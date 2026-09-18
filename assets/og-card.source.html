@@ -2,54 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
 <style>
-  /* Mirrors the site hero: same palette, same type scale, same portrait treatment. */
-  *{box-sizing:border-box;margin:0;padding:0}
+  /* Social card, 1200x630. Mirrors the site: same tokens, same type, same street-grid motif.
+     Render at 2x and downscale so the type stays crisp in feeds. */
+  *{box-sizing:border-box; margin:0; padding:0}
   :root{
-    --bg:#14110F; --bg-soft:#1C1815; --maroon-bright:#D66672;
-    --text:#F2EDE6; --text-soft:#C4BCB2; --border:#2E2823;
+    --bg:#0F161B; --ink:#E9EDEB; --ink-2:#B9C3C7; --ink-3:#8E9CA5;
+    --rule:#26323A; --accent:#C0404F; --grid-cell:#1A262E;
+    --sans:'Public Sans', system-ui, sans-serif;
+    --serif:'Source Serif 4', Georgia, serif;
   }
-  html,body{width:1200px;height:630px}
-  body{
-    background:var(--bg); color:var(--text);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    display:flex; align-items:center; padding:0 78px;
+  html,body{width:1200px; height:630px}
+  body{background:var(--bg); color:var(--ink); font-family:var(--sans); position:relative; overflow:hidden}
+
+  .content{
+    position:absolute; inset:0;
+    display:grid; grid-template-columns:1fr 248px; gap:56px; align-items:center;
+    padding:64px 84px 170px;           /* bottom room for the grid band */
   }
-  .hero-top{display:grid; grid-template-columns:1fr 300px; gap:56px; align-items:center; width:100%}
-  .eyebrow{
-    font-size:19px; font-weight:700; color:var(--maroon-bright);
-    text-transform:uppercase; letter-spacing:0.09em; margin-bottom:22px;
+  .name{font-size:63px; font-weight:700; line-height:1.05; letter-spacing:-0.03em; white-space:nowrap}
+  .role{margin-top:18px; font-size:29px; font-weight:500; color:var(--ink-2)}
+  .line{
+    margin-top:26px; padding-top:26px; border-top:1px solid var(--rule);
+    font-family:var(--serif); font-size:26px; line-height:1.45; color:var(--ink-2); max-width:640px;
   }
-  h1{
-    font-weight:800; font-size:64px; line-height:1.08;
-    letter-spacing:-0.028em; margin-bottom:26px; color:var(--text);
-  }
-  .hero-sub{font-size:23px; line-height:1.5; color:var(--text-soft); max-width:640px}
   .portrait{
-    width:300px; height:300px; border-radius:50%;
-    object-fit:cover; display:block;
-    background:radial-gradient(circle at 50% 28%, #3A2B2C 0%, #1C1815 72%);
-    border:1px solid var(--border);
-    box-shadow:0 0 0 8px var(--bg-soft);
+    width:248px; height:248px; border-radius:50%; object-fit:cover; display:block;
+    background:radial-gradient(circle at 50% 30%, #2C3A44 0%, #152028 72%);
+    border:1px solid var(--rule);
   }
+  /* The same plate as the site: city blocks along a transit line. */
+  .plate{position:absolute; left:0; right:0; bottom:0; height:126px; border-top:1px solid var(--rule)}
+  .plate svg{display:block; width:100%; height:100%}
+  .cell{fill:var(--grid-cell)}
+  .hot{fill:var(--accent)}
+  .corridor{fill:none; stroke:var(--ink); stroke-width:3; stroke-linejoin:round}
+  .station{fill:var(--bg); stroke:var(--ink); stroke-width:3}
   .url{
-    position:absolute; left:78px; bottom:44px;
-    display:flex; align-items:center; gap:12px;
-    font-size:21px; font-weight:700; color:var(--maroon-bright);
+    position:absolute; right:84px; bottom:166px;
+    font-size:22px; font-weight:700; color:var(--ink-3); letter-spacing:0.01em;
   }
-  .dot{width:9px;height:9px;border-radius:50%;background:var(--maroon-bright)}
 </style>
 </head>
 <body>
-  <div class="hero-top">
+  <div class="content">
     <div>
-      <div class="eyebrow">Applied economist &amp; data scientist, Chicago</div>
-      <h1>I turn messy data into decisions people can act on.</h1>
-      <div class="hero-sub">Econometrics and machine learning on property taxes, housing, transit, and regulation.</div>
+      <div class="name">Rodrigo França Chaves</div>
+      <div class="role">Applied economist and data scientist, Chicago</div>
+      <div class="line">Econometrics and machine learning on property taxes, housing, transit, and utility regulation.</div>
     </div>
     <img class="portrait" src="rodrigo-headshot@2x.webp" alt="">
   </div>
-  <div class="url"><span class="dot"></span>rodrigofch7.github.io</div>
+  <div class="url">rodrigofch7.github.io</div>
+  <div class="plate"><svg id="plate" viewBox="0 0 1200 126" preserveAspectRatio="xMidYMid slice"></svg></div>
+
+<script>
+  // Same drawing rule as the site: streets, one diagonal jog, three flat shading bands.
+  (function(){
+    var svg = document.getElementById('plate'), NS = 'http://www.w3.org/2000/svg';
+    var W = 1200, H = 126, pitch = 18, size = 14;
+    var line = [[-20,97],[421,97],[493,25],[1220,25]];
+    var stations = [[205,97],[421,97],[637,25],[853,25],[1069,25]];
+    var bands = [[9,0],[24,0.75],[42,0.4],[60,0.16]];
+    function dist(px,py,a,b){
+      var dx=b[0]-a[0], dy=b[1]-a[1];
+      var t=Math.max(0,Math.min(1,((px-a[0])*dx+(py-a[1])*dy)/(dx*dx+dy*dy)));
+      return Math.hypot(px-(a[0]+t*dx), py-(a[1]+t*dy));
+    }
+    function sq(x,y){ return 'M'+x+' '+y+'h'+size+'v'+size+'h-'+size+'z'; }
+    var baseD='', hotD=['','','',''];
+    for (var r=0; r*pitch<H; r++){
+      if (r % 4 === 3) continue;
+      for (var c=0; c*pitch<W+pitch; c++){
+        if (c % 6 === 5) continue;
+        var x=c*pitch, y=r*pitch, d=Infinity;
+        for (var i=0;i<line.length-1;i++) d=Math.min(d, dist(x+size/2, y+size/2, line[i], line[i+1]));
+        baseD += sq(x,y);
+        for (var k=0;k<bands.length;k++){ if (d<bands[k][0]){ if (bands[k][1]>0) hotD[k]+=sq(x,y); break; } }
+      }
+    }
+    function add(dAttr, cls, op){
+      if (!dAttr) return;
+      var p=document.createElementNS(NS,'path');
+      p.setAttribute('d',dAttr); p.setAttribute('class',cls);
+      if (op) p.setAttribute('fill-opacity',op);
+      svg.appendChild(p);
+    }
+    add(baseD,'cell');
+    for (var k=1;k<bands.length;k++) add(hotD[k],'hot',bands[k][1]);
+    var poly=document.createElementNS(NS,'polyline');
+    poly.setAttribute('points', line.map(function(p){return p.join(',')}).join(' '));
+    poly.setAttribute('class','corridor');
+    svg.appendChild(poly);
+    stations.forEach(function(p){
+      var s=document.createElementNS(NS,'circle');
+      s.setAttribute('cx',p[0]); s.setAttribute('cy',p[1]); s.setAttribute('r',6); s.setAttribute('class','station');
+      svg.appendChild(s);
+    });
+  })();
+</script>
 </body>
 </html>
