@@ -94,11 +94,12 @@
   .btn-primary:hover{background:var(--btn-bg-hover); color:#fff;}
   .btn-secondary{border:1px solid color-mix(in srgb, var(--ink-3) 80%, var(--bg)); color:var(--ink);}
   .btn-secondary:hover{color:var(--ink); border-color:var(--ink-3);}
+  @media (pointer: coarse){ .nav-links a{min-height:44px; display:inline-flex; align-items:center;} .btn{min-height:48px;} }
   @media (max-width:640px){
     main{padding-block:56px;}
     .nav-inner{display:grid; grid-template-columns:minmax(0,1fr); gap:0; padding-block:6px 0;}
-    .nav-links{flex-wrap:wrap; gap:0 18px;}
-    .nav-links a{min-height:44px; display:inline-flex; align-items:center; white-space:nowrap; font-size:14.5px;}
+    .nav-links{flex-wrap:wrap; gap:0 12px;}
+    .nav-links a{min-height:44px; display:inline-flex; align-items:center; white-space:nowrap; font-size:13.5px;}
   }
 
 </style>

@@ -113,7 +113,6 @@
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; scroll-padding-top:76px;}
-  @media (min-width: 641px) and (max-width: 720px){ html{scroll-padding-top:112px;} }
   body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
   a{color:var(--link); text-decoration:underline; text-decoration-thickness:var(--link-thick); text-underline-offset:0.2em; text-decoration-color:var(--link-line);}
   a:hover{color:var(--link-hover); text-decoration-color:currentColor;}
@@ -208,7 +207,7 @@
   .pub-title{font-weight:700; font-size:1.12rem; line-height:1.35; color:var(--ink); margin:0 0 6px;}
   .pub-venue{font-size:15px; font-weight:500; color:var(--ink-2); margin:0 0 12px;}
   .pub-venue em{font-family:var(--serif); font-style:italic; font-size:1.04em;}
-  .pub p.serif{margin:0 0 14px;}
+  .pub p.serif{margin:0 0 14px; max-width:66ch;}
   .text-link{font-weight:600; font-size:15px;}
 
   /* Projects */
@@ -254,17 +253,33 @@
     .nav-inner{display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:0 12px; padding-block:6px 0;}
     .nav-name{margin-right:0; grid-column:1; grid-row:1;}
     .theme-toggle{grid-column:2; grid-row:1;}
-    .nav-links{grid-column:1 / -1; grid-row:2; flex-wrap:wrap; gap:0 18px;}
-    .nav-links a{min-height:44px; display:inline-flex; align-items:center; white-space:nowrap; font-size:14.5px;}
+    .nav-links{grid-column:1 / -1; grid-row:2; flex-wrap:wrap; gap:0 12px;}
+    .nav-links a{min-height:44px; display:inline-flex; align-items:center; white-space:nowrap; font-size:13.5px;}
     .hero{padding-block:32px 0;}
     .hero-portrait{width:80px; height:80px;}
     .plate{margin-top:36px;}
     .pub{display:block;}
     .pub-thumb{display:none;}
     .facts{grid-template-columns:repeat(2, minmax(0,1fr));}
+    .prose p, .serif{font-size:1.06rem;}
     .toolkit{grid-template-columns:1fr;}
     .prose p, .serif{font-size:1.04rem;}
   }
+  @media (max-width: 380px){
+    .nav-links{gap:0 9px;}
+    .nav-links a{font-size:12.8px;}
+  }
+  @media (max-width: 360px){
+    .facts{grid-template-columns:1fr; gap:12px;}
+  }
+
+  /* Touch devices: give every control a finger-sized target. */
+  @media (pointer: coarse){
+    .hero-links a, .copy-email, .contact-list a, .project-links a, .text-link{min-height:44px; display:inline-flex; align-items:center;}
+    .theme-toggle{width:44px; height:44px;}
+    .nav-links a{min-height:44px;}
+  }
+
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     .plate.animate .hot, .plate.animate .station{animation:none; opacity:1;}
