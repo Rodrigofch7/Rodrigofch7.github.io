@@ -21,33 +21,21 @@
 
 \vspace{3pt}
 
-\cventry{Graduate Research Assistant}{Mansueto Institute for Urban Innovation, UChicago}{Chicago, IL}{Mar – Jun 2026 · Resuming Sep 2026}
+\cventry{Graduate Research Assistant}{Mansueto Institute for Urban Innovation, UChicago}{Chicago, IL}{Mar – Jun 2026 · Sep 2026 – Present}
 \begin{itemize}
-  \item Built a digitization pipeline for century-old fire insurance registers, cloth-bound volumes that had never been machine-readable, covering page segmentation, OCR, and structured extraction.
-  \item Recovered thousands of firm addresses from hundreds of pages, matched them to three historical censuses by street, and classified establishments into hundreds of industries using natural language processing on firm names. The result is a record of industrial location in twentieth-century Chicago that did not previously exist.
-  \item Returning in September 2026 to write the method up as a paper documenting the pipeline for other researchers working with archival records.
+  \item Co-author on a methods and data paper in preparation, turning the scanned index pages of century-old Sanborn fire insurance atlases into structured records. Pages are read with a vision-language model rather than conventional OCR, through a provider-agnostic runner. Built the evaluation behind it: hand-labeled ground truth, blind validation windows, and measured precision and recall across competing prompts, which is what established the production prompt over the alternatives.
+  \item Linked the extracted sites to the full-count US census, 1900 to 1940, by block, producing a record of industrial location in twentieth-century Chicago that did not previously exist.
 \end{itemize}
 
 \vspace{3pt}
 
-\cventry{Research Assistant}{Insper Cities Lab (Arq.Futuro)}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
+\cventry{Research Assistant \& Teaching Assistant}{Insper (Cities Lab, Arq.Futuro)}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
 \begin{itemize}
-  \item Two years of quasi-experimental policy evaluation across water utilities, crime, property taxation, and real estate markets in Brazil, using difference-in-differences, regression discontinuity, and spatial methods.
-  \item Constructed the underlying data: home prices, tax assessments, and disease rates matched across municipalities and census tracts, and grouped into new geographic units by spatial clustering where no official boundary suited the question.
-  \item Reconciled administrative records from several government sources, resolving mismatched identifiers and gaps in coverage so the panels aligned across two decades. Without that step the privatization analysis would not have been identifiable.
-  \item First author on the resulting \textit{Utilities Policy} article and second author on an in-progress working paper on police body cameras.
-  \item Mentored undergraduate researchers on research design, econometrics, and academic writing, and coordinated teams working to publication deadlines.
+  \item Two years of quasi-experimental policy evaluation across water utilities, crime, property taxation, and real estate markets, using difference-in-differences, regression discontinuity, and spatial methods.
+  \item Constructed the underlying data: home prices, tax assessments, and disease rates matched across municipalities and census tracts, reconciling administrative records from several government sources so the panels aligned across two decades. Without that step the privatization analysis would not have been identifiable.
+  \item First author on the resulting \textit{Utilities Policy} article and second author on a working paper on police body cameras.
+  \item Held concurrently with the research role: taught GIS and R to more than 50 students, advised undergraduate theses through Brazil's required capstone, one of which placed second in its cohort, and ran an intensive field course with municipal officials.
 \end{itemize}
-
-\vspace{3pt}
-
-\cventry{Teaching Assistant: GIS, Econometrics and R}{Insper}{São Paulo, Brazil}{Aug 2023 – Jul 2025}
-\begin{itemize}
-  \item Taught GIS and R to more than 50 students, using São Paulo as the working case: its housing market, its transit network, and the way density and land values decline with distance from the center.
-  \item Advised undergraduate theses through Brazil's required capstone; one placed second in its cohort.
-  \item Ran an intensive field course conducted with municipal officials.
-\end{itemize}
-
 
 %── PROJECTS ─────────────────────────────────────────────────────────────────
 \section{Projects}
@@ -55,7 +43,7 @@
 \cvproject{NYC Property Tax: A Horizontal-Equity Audit}
           {Python · LightGBM · scikit-learn}
           {\href{https://github.com/Rodrigofch7/nyc_property_taxes_local}{[GitHub]} \enspace \href{https://nycpropertytaxes.streamlit.app/}{[Live Dashboard]}}
-          {Horizontal equity requires that similar properties carry similar tax burdens. This project tests whether New York's assessment roll meets that standard. A citywide benchmark is uninformative when a Manhattan co-op and a Queens two-family fall into the same comparison, so each property is measured against a peer group defined by borough, building class, tax class, decade built, size, and value band, with a five-level fallback so that rare building types still receive a comparison group. On that definition roughly 43\% sit more than 15\% from their peer-group median; both the peer definition and the threshold are ours, so the figure measures dispersion within comparable groups rather than proven misassessment. Narrowing the value bands from quintiles to ventiles cut within-group price spread from \$475k to \$48k, trading a small accuracy loss for labels that carry meaning. Built on 138 leakage-free features and LightGBM, delivered as a dashboard for audit triage. I designed the peer-group methodology, built the data pipeline, and trained the models.}
+          {Horizontal equity requires that similar properties carry similar tax burdens. This project tests whether New York's assessment roll meets that standard across 1,097,559 properties. A citywide benchmark is uninformative when a Manhattan co-op and a Queens two-family fall into the same comparison, so each property is measured against a peer group defined on six dimensions with a five-level fallback. On that definition roughly 43\% sit more than 15\% from their peer-group median; both the peer definition and the threshold are ours, so the figure measures dispersion within comparable groups rather than proven misassessment. Narrowing the value bands from quintiles to ventiles cut within-group price spread from \$475k to \$48k for a small accuracy loss. Built on 138 leakage-free features and LightGBM, delivered as a dashboard for audit triage. On a three-person course project I designed the peer-group methodology, built the pipeline, and trained the models.}
 
 \cvproject{Data Centers Next Door: Cloud Infrastructure and Housing Costs}
           {R · Shiny · Spatial Econometrics}
@@ -67,10 +55,10 @@
 \section{Technical Skills}
 
 \skillrow{Methods}{Causal Inference (DiD, Staggered DiD, RDD, IV), Panel \& Spatial Econometrics, Remote Sensing}
-\skillrow{Programming \& Data}{Python, R, SQL, PostgreSQL, Stata; data pipelines, OCR, geospatial workflows}
-\skillrow{Tools}{QGIS, ArcGIS, Git, LaTeX, Excel, Streamlit, Shiny}
-\skillrow{Domain}{Property tax \& valuation, zoning \& land use, housing \& infrastructure policy, utility regulation}
-\skillrow{Languages}{Portuguese (Native), English (Fluent, TOEFL 112/120), Spanish (Professional Working), German (Conversational)}
+\skillrow{Programming \& Data}{Python, R, SQL, PostgreSQL, Stata; data pipelines, OCR \& vision-language extraction, geospatial workflows}
+\skillrow{Tools}{QGIS, ArcGIS, Git, LaTeX, Excel, Streamlit, Shiny, DuckDB}
+\skillrow{Domain}{Property tax \& valuation, land use, housing \& infrastructure policy, utility regulation}
+\skillrow{Languages}{Portuguese (Native), English (Fluent, TOEFL 112), Spanish (Professional), German (Conversational)}
 
 
 \end{document}
