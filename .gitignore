@@ -10,3 +10,10 @@ phd/
 
 # Local agent skills (third-party licenses vary). Never commit.
 .claude/
+
+# Personal projections: salary, savings, scenarios. Never published.
+projections/
+
+# Deep research: working notes and reports, private
+research_notes/
+reports/
