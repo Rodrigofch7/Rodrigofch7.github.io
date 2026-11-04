@@ -27,6 +27,7 @@ aurora/
 wharton/
 kelley/
 predoc/
+predoc2027/
 hra/
 deloitte/
 pa/
@@ -45,4 +46,6 @@ bfidil/
 hatch/
 quantumblack/
 cepa/
+furman/
+mathematica/
 .check-private
